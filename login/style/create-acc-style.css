@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap%27');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/*choose account type*/
+section#acc-type {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+
+section#acc-type input[type=radio] {
+    display: none;
+}
+
+section#acc-type .button {
+    height: 100px;
+    width: calc(100% / 3);
+    display: flex;
+    padding: 0 20px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(208, 243, 255);
+    border: 1px solid black;
+}
+
+section#acc-type .button h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+section#acc-type .button span {
+    font-size: 15px;
+    text-align: left;
+    text-align: center;
+}
+
+/*CREATE ACCOUNT FORM*/
+section#main {
+    width: 300%;
+    display: flex;
+    flex-direction: row;
+    z-index: -1;
+}
+
+section.create {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.create span {
+    margin: 20px;
+    align-self: center;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.scb {
+    display: none;
+}
+
+.slide-button {
+    position: absolute;
+    bottom: 90px;
+    transform: translateX(130px);
+    z-index: 1;
+}
+
+.slide-button span {
+    font-size: 15px;
+    border: none;
+}
+
+.slide-button span::after {
+    content: '<< back';
+    text-transform: uppercase;
+    border: 1px solid;
+    padding: 10px 20px;
+}
+
+.sign-form {
+    position: relative;
+    width: 400px;
+    padding: 20px 50px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.main-container {
+    display: flex;
+}
+
+.container {
+    top: 20px;
+    left: 50px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.hidden {
+    margin-left: 80px;
+}
+
+.sign-form label {
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.sign-form input {
+    margin-top: 10px;
+    height: 40px;
+    width: calc(100% - 20px);
+    font-size: 17px;
+    font-weight: 200;
+    background-color: rgb(226, 226, 226);
+    padding: 0px 10px;
+    border: none;
+}
+
+.sign-form input[type=file] {
+    padding: none;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+}
+
+.sign-form select {
+    height: 40px;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.sign-form button {
+    margin-top: 90px;
+    height: 40px;
+    width: 100%;
+    font-size: 17px;
+    color: white;
+    background-color: rgb(77, 148, 255);
+    border: none;
+}
+
+.sign-form#account-form-vendor button {
+    margin-top: 180px;
+}
+
+.sign-form input:hover,
+.sign-form button:hover {
+    opacity: 0.8;
+}
+
+/*buttons change color*/
+section#acc-type input:checked+label {
+    background-color: lightblue;
+    transition: 0.5s;
+}
+
+/*-----TRANSITION-----*/
+
+/*CUSTOMER FORM*/
+/*main*/
+section#acc-type:has(> input#customer:checked)~section#main {
+    transform: translateX(0);
+    transition: ease-in-out 1s;
+}
+
+section#acc-type:has(> input#customer:not(:checked))~section#main {
+    transition: ease-in-out 1s;
+}
+
+/*form*/
+.scb:checked+label {
+    transform: translateX(-148px);
+    transition: 1s ease-out;
+}
+
+.scb:checked+label span::after {
+    transition: 1s ease-out;
+    background: rgb(248, 224, 255);
+}
+
+
+.scb:not(:checked)+label {
+    transition: 1s ease-out;
+}
+
+.scb:not(:checked)+label span::after {
+    transition: 1s ease-out;
+    background: lightcyan
+}
+
+.scb:not(:checked)+label span::after {
+    content: 'continue >>';
+}
+
+.scb:checked~form.sign-form .main-container {
+    transform: translateX(calc(-50% - 40px));
+    transition: 1s;
+}
+
+.scb:not(:checked)~form.sign-form .main-container {
+    transition: 1s;
+}
+
+
+/*main transition for shipper form*/
+section#acc-type:has(> input#shipper:checked)~section#main {
+    transform: translateX(calc(-100% / 3));
+    transition: ease-in-out 1s;
+}
+
+section#acc-type:has(> input#shipper:not(:checked))~section#main {
+    transition: ease-in-out 1s;
+}
+
+/*main transition for vendor form*/
+section#acc-type:has(> input#vendor:checked)~section#main {
+    transform: translateX(calc(-200% / 3));
+    transition: ease-in-out 1s;
+}
+
+section#acc-type:has(> input#vendor:not(:checked))~section#main {
+    transition: ease-in-out 1s;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/create-acc-style.css">
+    <title>Create Account</title>
+</head>
+
+<body>
+    <section id="acc-type">
+        <input type="radio" name="account-type" id="customer" checked="checked">
+        <label class="button" for="customer">
+            <h1>CUSTOMER ACCOUNT</h1>
+        </label>
+
+        <input type="radio" name="account-type" id="shipper">
+        <label class="button" for="shipper">
+            <h1>SHIPPER ACCOUNT</h1>
+        </label>
+
+        <input type="radio" name="account-type" id="vendor">
+        <label class="button" for="vendor">
+            <h1>VENDOR ACCOUNT</h1>
+        </label>
+    </section>
+
+    <section id="main">
+        <section class="create" id="customer-sign">
+            <span>CUSTOMER ACCOUNT</span>
+            <input class="scb" type="checkbox" id="customer-slide">
+            <label class="slide-button" for="customer-slide"><span></span></label>
+            <form method="post" class="sign-form" name="account_form_customer" id="account-form-customer" action="">
+                <div class="main-container">
+                    <div class="container">
+                        <label for="username">USER NAME:</label>
+                        <input type="text" name="username" id="username" required>
+                        <label for="password">PASSWORD:</label>
+                        <input type="password" name="password" id="password" required>
+                        <label for="profile-picture">PROFILE PICTURE:</label>
+                        <input type="file" name="profile-picture" id="profile-picture">
+                    </div>
+
+                    <div class="container hidden">
+                        <label for="first-name">FIRST NAME:</label>
+                        <input type="text" name="first_name" id="first-name" required>
+                        <label for="last-name">LAST NAME:</label>
+                        <input type="text" name="last_name" id="last-name" required>
+                        <label for="address">ADDRESS:</label>
+                        <input type="text" name="address" id="address" required>
+                        <button type="submit">Create Account</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="create" id="shipper-sign">
+            <span>SHIPPER ACCOUNT</span>
+            <input class="scb" type="checkbox" id="shipper-slide">
+            <label class="slide-button" for="shipper-slide"><span></span></label>
+            <form method="post" class="sign-form" name="account_form_shipper" id="account-form-shipper" action="">
+                <div class="main-container">
+                    <div class="container">
+                        <label for="username">USER NAME:</label>
+                        <input type="text" name="username" id="username" required>
+                        <label for="password">PASSWORD:</label>
+                        <input type="password" name="password" id="password" required>
+                        <label for="profile-picture">PROFILE PICTURE:</label>
+                        <input type="file" name="profile-picture" id="profile-picture" required>
+                    </div>
+
+
+                    <div class="container hidden">
+                        <label for="first-name">FIRST NAME:</label>
+                        <input type="text" name="first_name" id="first-name" required>
+                        <label for="last-name">LAST NAME:</label>
+                        <input type="text" name="last_name" id="last-name" required>
+                        <label for="dis-hub">DISTRIBUTION HUB:</label>
+                        <select name="distribution-hub" id="dis-hub" required>
+                            <option value='' disabled selected>&#60 - - - Not Selected - - - &#62</option>
+                            <!--ADD OPTIONS WITH VALUES HERE-->
+                        </select>
+                        <button type="submit">Create Account</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="create" id="vendor-sign">
+            <span>VENDOR ACCOUNT</span>
+            <input class="scb" type="checkbox" id="vendor-slide">
+            <label class="slide-button" for="vendor-slide"><span></span></label>
+            <form method="post" class="sign-form" name="account_form_vendor" id="account-form-vendor" action="">
+                <div class="main-container">
+                    <div class="container">
+                        <label for="username">USER NAME:</label>
+                        <input type="text" name="username" id="username" required>
+                        <label for="password">PASSWORD:</label>
+                        <input type="password" name="password" id="password" required>
+                        <label for="profile-picture">PROFILE PICTURE:</label>
+                        <input type="file" name="profile-picture" id="profile-picture" required>
+                    </div>
+
+                    <div class="container hidden">
+                        <label for="b-name">BUSINESS NAME:</label>
+                        <input type="text" name="business_name" id="b-name" required>
+                        <label for="b-address">BUSINESS ADDRESS:</label>
+                        <input type="text" name="business_address" id="b-address" required>
+                        <button type="submit">Create Account</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </section>
+</body>
+
+</html>
