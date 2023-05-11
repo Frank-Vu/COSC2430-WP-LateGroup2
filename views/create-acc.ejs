@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/create-acc-style.css">
+    <title>Create Account</title>
+</head>
+
+<body>
+    <section id="acc-type">
+        <input type="checkbox" name="account-type" id="customer">
+        <input type="checkbox" name="account-type" id="shipper">
+        <input type="checkbox" name="account-type" id="vendor">
+
+        <label class="button" for="customer">
+            <div class="img">
+                <img src="img/customer.png" alt="">
+            </div>
+            <div class="description">
+                <h1>CUSTOMER ACCOUNT</h1>
+                <span>Sign up as a customer to browse and purchase the goods on the site.</span>
+            </div>
+        </label>
+
+        <label class="button" for="shipper">
+            <div class="img">
+                <img src="img/shipper.png" alt="">
+            </div>
+            <div class="description">
+                <h1>SHIPPER ACCOUNT</h1>
+                <span>Join our shipper team to deliver products.</span>
+            </div>
+        </label>
+
+        <label class="button" for="vendor">
+            <div class="img">
+                <img src="img/vendor.png" alt="">
+            </div>
+            <div class="description">
+                <h1>VENDOR ACCOUNT</h1>
+                <span>Be our companion and sell your products.</span>
+            </div>
+        </label>
+    </section>
+
+    <section class="create" id="customer-sign">
+        <label class="return" class="button" for="customer">
+            <div>
+                return
+            </div>
+        </label>
+        <span>CUSTOMER ACCOUNT</span>
+        <form method="post" class="sign-form" action="/register-customer">
+            <label for="username">USER NAME:</label>
+            <input type="text" name="username" id="username">
+            <label for="password">PASSWORD:</label>
+            <input type="password" name="password" id="password">
+            <label for="firstName">FIRST NAME:</label>
+            <input type="text" name="firstName" id="firstName">
+            <label for="lastName">LAST NAME:</label>
+            <input type="text" name="lastName" id="lastName">
+            <label for="address">ADDRESS:</label>
+            <input type="text" name="address" id="address">
+            <label for="profilePicture">PROFILE PICTURE:</label>
+            <input type="file" name="profilePicture" id="profilePicture">
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+
+    <section class="create" id="shipper-sign">
+        <label class="return" class="button" for="shipper">
+            <div>
+                return
+            </div>
+        </label>
+        <span>SHIPPER ACCOUNT</span>
+        <form method="post" class="sign-form" action="/register-shipper">
+            <label for="username">USER NAME:</label>
+            <input type="text" name="username" id="username">
+            <label for="password">PASSWORD:</label>
+            <input type="password" name="password" id="password">
+            <label for="firstName">FIRST NAME:</label>
+            <input type="text" name="firstName" id="firstName">
+            <label for="lastName">LAST NAME:</label>
+            <input type="text" name="lastName" id="lastName">
+            <label for="dis_hub">DISTRIBUTION HUB:</label>
+            <input type="text" name="dis_hub" id="dis_hub">
+            <label for="profilePicture">PROFILE PICTURE:</label>
+            <input type="file" name="profilePicture" id="profilePicture">
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+
+    <section class="create" id="vendor-sign">
+        <label class="return" class="button" for="vendor">
+            <div>
+                return
+            </div>
+        </label>
+        <span>VENDOR ACCOUNT</span>
+        <form method="post" class="sign-form" action="/register-vendor">
+            <label for="username">USER NAME:</label>
+            <input type="text" name="username" id="username">
+            <label for="password">PASSWORD:</label>
+            <input type="password" name="password" id="password">
+            <label for="b_name">BUSINESS NAME:</label>
+            <input type="text" name="b_name" id="b_name">
+            <label for="b_address">BUSINESS ADDRESS:</label>
+            <input type="text" name="b_address" id="b_address">
+            <label for="profilePicture">PROFILE PICTURE:</label>
+            <input type="file" name="profilePicture" id="profilePicture">
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+</body>
+
+</html>
