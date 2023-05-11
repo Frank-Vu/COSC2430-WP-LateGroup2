@@ -1,25 +1,19 @@
 {
-  "name": "cosc2430-wp-lategroup2",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongodb": "^5.4.0",
+    "mongoose": "^7.1.1",
+    "nodemon": "^2.0.22"
+  },
+  "name": "registration",
   "version": "1.0.0",
-  "description": "This package is for the LateGroup2's Website",
+  "description": "registration page",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Frank-Vu/COSC2430-WP-LateGroup2.git"
-  },
-  "author": "Tung Vu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Frank-Vu/COSC2430-WP-LateGroup2/issues"
-  },
-  "homepage": "https://github.com/Frank-Vu/COSC2430-WP-LateGroup2#readme",
-  "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "mongodb": "^5.4.0",
-    "mongoose": "^7.1.0"
-  }
+  "author": "",
+  "license": "ISC"
 }
