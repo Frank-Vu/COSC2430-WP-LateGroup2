@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* || HEADER */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg-color);
+    z-index: 9;
+}
+
+/* | First part of the navbar */
+.nav {
+    padding: 10px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Header logo */
+.header-logo {
+    width: 60px;
+    transition: 0.5s;
+}
+
+.header-logo:hover {
+    scale: 1.02;
+    transition: 0.5s;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+/* Search bar */
+.search {
+    width: 500px;
+    display: flex;
+}
+
+.search-box {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    font-family: var(--title-font-family);
+    outline: none;
+}
+
+.search-btn {
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #383838;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder {
+    color: #a9a9a9;
+}
+
+/* Account, cart, and theme */
+.nav-items a {
+    margin-left: 20px;
+}
+
+.nav-items a img {
+    width: 30px;
+}
+
+/* | Second part of the navbar */
+/* Nav links */
+.links-container {
+    width: 100%;
+    display: flex;
+    padding: 10px 10vw;
+    justify-content: center;
+    list-style: none;
+    border-top: 1px solid #d1d1d1;
+}
+
+.link {
+    font-family: var(--title-font-family);
+    font-size: 20px;
+    font-weight: var(--title-font-weight);
+    color: var(--title-font-color);
+    text-decoration: none;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0 10px;
+    margin: 0 5px;
+    opacity: 0.5;
+    transition: .5s;
+}
+
+.link:hover {
+    opacity: 1;
+}
