@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/create-acc-style.css">
+    <script src="javascript/verify.js"></script>
     <title>Create Account</title>
 </head>
 
@@ -13,43 +14,63 @@
     <section id="acc-type">
         <input type="radio" name="account-type" id="customer" checked="checked">
         <label class="button" for="customer">
-            <h1>CUSTOMER ACCOUNT</h1>
+            <h1>CUSTOMER</h1>
         </label>
 
         <input type="radio" name="account-type" id="shipper">
         <label class="button" for="shipper">
-            <h1>SHIPPER ACCOUNT</h1>
+            <h1>SHIPPER</h1>
         </label>
 
         <input type="radio" name="account-type" id="vendor">
         <label class="button" for="vendor">
-            <h1>VENDOR ACCOUNT</h1>
+            <h1>VENDOR</h1>
         </label>
     </section>
 
     <section id="main">
         <section class="create" id="customer-sign">
-            <span>CUSTOMER ACCOUNT</span>
+            <div class="description">
+                asd
+            </div>
             <input class="scb" type="checkbox" id="customer-slide">
             <label class="slide-button" for="customer-slide"><span></span></label>
             <form method="post" class="sign-form" name="account_form_customer" id="account-form-customer" action="">
+                <h2>CUSTOMER ACCOUNT</h2>
                 <div class="main-container">
                     <div class="container">
-                        <label for="username">USER NAME:</label>
-                        <input type="text" name="username" id="username" required>
-                        <label for="password">PASSWORD:</label>
-                        <input type="password" name="password" id="password" required>
-                        <label for="profile-picture">PROFILE PICTURE:</label>
-                        <input type="file" name="profile-picture" id="profile-picture">
+                        <div class="input-box">
+                            <input type="text" name="username" id="username" required>
+                            <label for="username">USER NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="customer_password" id="password" required>
+                            <label for="password">PASSWORD:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="customer_confirm_password" id="confirm-password" required>
+                            <label for="confirm-password">CONFIRM PASSWORD:</label>
+                        </div>
                     </div>
 
                     <div class="container hidden">
-                        <label for="first-name">FIRST NAME:</label>
-                        <input type="text" name="first_name" id="first-name" required>
-                        <label for="last-name">LAST NAME:</label>
-                        <input type="text" name="last_name" id="last-name" required>
-                        <label for="address">ADDRESS:</label>
-                        <input type="text" name="address" id="address" required>
+                        <div class="input-box">
+                            <input type="text" name="full_name" id="full-name" placeholder="E.g. Harry Smith" required>
+                            <label for="full-name">FULL NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="text" name="address" id="address" required>
+                            <label for="address">ADDRESS:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="file" name="profile-picture" id="profile-picture">
+                            <label for="profile-picture">PROFILE PICTURE:</label>
+                        </div>
+
                         <button type="submit">Create Account</button>
                     </div>
                 </div>
@@ -57,31 +78,48 @@
         </section>
 
         <section class="create" id="shipper-sign">
-            <span>SHIPPER ACCOUNT</span>
+            <h2>SHIPPER ACCOUNT</h2>
             <input class="scb" type="checkbox" id="shipper-slide">
             <label class="slide-button" for="shipper-slide"><span></span></label>
             <form method="post" class="sign-form" name="account_form_shipper" id="account-form-shipper" action="">
                 <div class="main-container">
                     <div class="container">
-                        <label for="username">USER NAME:</label>
-                        <input type="text" name="username" id="username" required>
-                        <label for="password">PASSWORD:</label>
-                        <input type="password" name="password" id="password" required>
-                        <label for="profile-picture">PROFILE PICTURE:</label>
-                        <input type="file" name="profile-picture" id="profile-picture" required>
+                        <div class="input-box">
+                            <input type="text" name="username" id="username" required>
+                            <label for="username">USER NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="password" id="password" required>
+                            <label for="password">PASSWORD:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="confirm_password" id="confirm-password" required>
+                            <label for="confirm-password">CONFIRM PASSWORD:</label>
+                        </div>
                     </div>
 
 
                     <div class="container hidden">
-                        <label for="first-name">FIRST NAME:</label>
-                        <input type="text" name="first_name" id="first-name" required>
-                        <label for="last-name">LAST NAME:</label>
-                        <input type="text" name="last_name" id="last-name" required>
-                        <label for="dis-hub">DISTRIBUTION HUB:</label>
-                        <select name="distribution-hub" id="dis-hub" required>
-                            <option value='' disabled selected>&#60 - - - Not Selected - - - &#62</option>
-                            <!--ADD OPTIONS WITH VALUES HERE-->
-                        </select>
+                        <div class="input-box">
+                            <input type="text" name="full_name" id="full-name" placeholder="E.g. Will Johnson" required>
+                            <label for="full-name">FULL NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <select name="distribution-hub" id="dis-hub" required>
+                                <option value='' disabled selected>&#60 - - - Not Selected - - - &#62</option>
+                                <!--ADD OPTIONS WITH VALUES HERE-->
+                            </select>
+                            <label for="dis-hub">DISTRIBUTION HUB:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="file" name="profile-picture" id="profile-picture">
+                            <label for="profile-picture">PROFILE PICTURE:</label>
+                        </div>
+
                         <button type="submit">Create Account</button>
                     </div>
                 </div>
@@ -89,31 +127,52 @@
         </section>
 
         <section class="create" id="vendor-sign">
-            <span>VENDOR ACCOUNT</span>
+            <h2>VENDOR ACCOUNT</h2>
             <input class="scb" type="checkbox" id="vendor-slide">
             <label class="slide-button" for="vendor-slide"><span></span></label>
             <form method="post" class="sign-form" name="account_form_vendor" id="account-form-vendor" action="">
                 <div class="main-container">
                     <div class="container">
-                        <label for="username">USER NAME:</label>
-                        <input type="text" name="username" id="username" required>
-                        <label for="password">PASSWORD:</label>
-                        <input type="password" name="password" id="password" required>
-                        <label for="profile-picture">PROFILE PICTURE:</label>
-                        <input type="file" name="profile-picture" id="profile-picture" required>
+                        <div class="input-box">
+                            <input type="text" name="username" id="username" required>
+                            <label for="username">USER NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="password" id="password" required>
+                            <label for="password">PASSWORD:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="confirm_password" id="confirm-password" required>
+                            <label for="confirm-password">CONFIRM PASSWORD:</label>
+                        </div>
                     </div>
 
                     <div class="container hidden">
-                        <label for="b-name">BUSINESS NAME:</label>
-                        <input type="text" name="business_name" id="b-name" required>
-                        <label for="b-address">BUSINESS ADDRESS:</label>
-                        <input type="text" name="business_address" id="b-address" required>
+                        <div class="input-box">
+                            <input type="text" name="business_name" id="b-name" required>
+                            <label for="b-name">BUSINESS NAME:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="text" name="business_address" id="b-address" required>
+                            <label for="b-address">BUSINESS ADDRESS:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="file" name="profile-picture" id="profile-picture">
+                            <label for="profile-picture">PROFILE PICTURE:</label>
+                        </div>
+
                         <button type="submit">Create Account</button>
                     </div>
                 </div>
             </form>
         </section>
     </section>
+
+    <div class="background"></div>
 </body>
 
 </html>
