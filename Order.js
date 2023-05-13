@@ -1,17 +1,5 @@
-const mongoose = require('mongoose');
+const router =require('express').Router();
 
-const orderSchema = new mongoose.Schema({
-    userid: String, require: true,
-    products: [{
-        productid: String,
-        quantity: Number, default:1,
-    }],
-    amount: Number, require:true,
-    address: Object, require:true,
-    status: String, default: 'pending',
-},
-    {
-        timestamps:true
-});
 
-module.exports = mongoose.model('Order', orderSchema)
+
+module.exports = router
