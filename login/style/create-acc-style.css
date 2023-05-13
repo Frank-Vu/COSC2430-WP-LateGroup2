@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
     --background-color: #eeeeee;
@@ -75,11 +75,190 @@ section#acc-type .button span {
     text-align: center;
 }
 
-/*CREATE ACCOUNT FORM*/
+/*----------CREATE ACCOUNT FORM---------*/
+/*---DESCRIPTION---*/
 
+/*General*/
+.description {
+    position: relative;
+    height: 100%;
+    width: 400px;
+}
+
+.slider {
+    position: relative;
+    width: 360px;
+    height: 90%;
+    margin: 5%;
+}
+
+.slider input[type=radio] {
+    display: none;
+}
+
+.slides {
+    width: 1280px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: 1s ease-in-out;
+}
+
+.desc-content {
+    width: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc-title {
+    margin: 30px 0 10px 0;
+    height: 60px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.image-container {
+    width: 85%;
+    height: calc(400px * 0.9 * 0.85);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc-content img {
+    width: 70%;
+    justify-self: center;
+    padding: 20px;
+}
+
+.desc-button-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.desc-button {
+    height: 10px;
+    width: 10px;
+    border: 2px solid;
+    border-radius: 50%;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.radio-reg:first-of-type:checked~.slides {
+    transform: translateX(0);
+    transition: 1s;
+}
+
+.radio-reg:nth-of-type(2):checked~.slides {
+    transform: translateX(-460px);
+}
+
+.radio-reg:nth-of-type(3):checked~.slides {
+    transform: translateX(calc(-460px * 2));
+}
+
+.radio-reg:first-of-type:checked~.desc-button-container .desc-button:first-of-type {
+    background-color: #eeeeee;
+}
+
+.radio-reg:nth-of-type(2):checked~.desc-button-container .desc-button:nth-of-type(2) {
+    background-color: #eeeeee;
+}
+
+.radio-reg:nth-of-type(3):checked~.desc-button-container .desc-button:nth-of-type(3) {
+    background-color: #eeeeee;
+}
+
+/*Customer*/
+.form-container{
+    position: relative;
+    box-shadow:0 0 60px 1px rgb(0, 98, 184);
+}
+
+#customer-sign .description {
+    background-color: rgb(0, 136, 255);
+}
+
+#customer-sign .desc-title {
+    color: #eeeeee;
+}
+
+#customer-sign .image-container {
+    background: linear-gradient(135deg, rgb(21, 146, 255), rgb(0, 125, 235));
+}
+
+#customer-sign .desc-button {
+    border-color: #eeeeee;
+}
+
+#customer-sign .desc-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/*Shipper*/
+#shipper-sign .form-container{
+    box-shadow: -20px 0 30px 1px rgb(169, 255, 160);
+}
+
+#shipper-sign .description {
+    background-color: rgb(20, 197, 0);
+}
+
+#shipper-sign .desc-title {
+    color: #eeeeee;
+}
+
+#shipper-sign .image-container {
+    background: linear-gradient(135deg, rgb(43, 211, 24), rgb(17, 168, 0));
+}
+
+#shipper-sign .desc-button {
+    border-color: #eeeeee;
+}
+
+#shipper-sign .desc-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/*Vendor*/
+#vendor-sign .form-container{
+    box-shadow:0 0 30px 1px rgb(255, 52, 75);
+}
+
+#vendor-sign .description {
+    background-color: rgb(255, 0, 72);
+}
+
+#vendor-sign .desc-title {
+    color: #eeeeee;
+}
+
+#vendor-sign .image-container {
+    background: linear-gradient(135deg, rgb(255, 52, 109), rgb(198, 0, 56));
+}
+
+#vendor-sign .desc-button {
+    border-color: #eeeeee;
+}
+
+#vendor-sign .desc-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/*---FORMS---*/
 /*slider*/
 section#main {
-    position: relative;
     margin-top: 30px;
     width: 300%;
     display: flex;
@@ -88,12 +267,10 @@ section#main {
 }
 
 section.create {
-    position: relative;
-    width: calc(21%);
+    width: calc(100% / 3);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
 }
 
 .create h2 {
@@ -103,11 +280,11 @@ section.create {
     word-spacing: 10px;
 }
 
-.scb {
+.slide-check-box {
     display: none;
 }
 
-.slide-button {
+.form-slider-button {
     position: absolute;
     bottom: 100px;
     right: 50px;
@@ -116,28 +293,31 @@ section.create {
     transition: 1s ease-out;
 }
 
-.slide-button span {
+.form-slider-button span {
     font-size: 15px;
     border: none;
 }
 
-.slide-button span::after {
+.form-slider-button span::after {
     content: '<< back';
     text-transform: uppercase;
-    border: 1px solid;
+    border-radius: 20px;
     padding: 10px 20px;
+    color: white;
+    transition: 1s;
 }
 
-/*DESCRIPTION*/
-.description {
+.form-container {
+    width: 900px;
     height: 100%;
-    width: calc(100% - 500px);
-    background-color: rgb(22, 146, 255);
-    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/*forms*/
-
+/*contents*/
 .sign-form {
     position: relative;
     width: 400px;
@@ -220,19 +400,13 @@ section.create {
     width: 100%;
     font-size: 17px;
     color: white;
-    background-color: rgb(77, 148, 255);
+    background-color: rgb(33, 122, 255);
     border: none;
 }
 
 .sign-form input:hover,
 .sign-form button:hover {
     opacity: 0.8;
-}
-
-/*buttons change color*/
-section#acc-type input:checked+label {
-    background-color: lightblue;
-    transition: 0.5s;
 }
 
 /*Background*/
@@ -242,13 +416,32 @@ section#acc-type input:checked+label {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgb(17, 129, 226);
     z-index: -99;
+    transition: 1s;
 }
 
-/*-----TRANSITION-----*/
+#acc-type:has(input#customer:checked)~.background {
+    background: rgb(13, 131, 234);
+}
+
+#acc-type:has(input#shipper:checked)~.background {
+    background: rgb(200, 255, 194);
+}
+
+#acc-type:has(input#vendor:checked)~.background {
+    background: rgb(255, 124, 124);
+}
+
+/***TRANSITION***/
+
 /*CUSTOMER FORM*/
 /*main*/
+section#acc-type input:checked+label {
+    background-color: rgb(0, 141, 149);
+    color: #eeeeee;
+    transition: 0.5s;
+}
+
 section#acc-type:has(> input#customer:checked)~section#main {
     transform: translateX(0);
     transition: ease-in-out 1s;
@@ -257,34 +450,6 @@ section#acc-type:has(> input#customer:checked)~section#main {
 section#acc-type:has(> input#customer:not(:checked))~section#main {
     transition: ease-in-out 1s;
 }
-
-/*form*/
-.scb:checked+label {
-    transform: translateX(calc(-400px + 100%));
-}
-
-.scb:checked+label span::after {
-    background: rgb(248, 224, 255);
-}
-
-.scb:not(:checked)+label span::after {
-    transition: 1s ease-out;
-    background: lightcyan
-}
-
-.scb:not(:checked)+label span::after {
-    content: 'continue >>';
-}
-
-.scb:checked~form.sign-form .main-container {
-    transform: translateX(calc(-50% - 40px));
-    transition: 1s;
-}
-
-.scb:not(:checked)~form.sign-form .main-container {
-    transition: 1s;
-}
-
 
 /*main transition for shipper form*/
 section#acc-type:has(> input#shipper:checked)~section#main {
@@ -304,4 +469,32 @@ section#acc-type:has(> input#vendor:checked)~section#main {
 
 section#acc-type:has(> input#vendor:not(:checked))~section#main {
     transition: ease-in-out 1s;
+}
+
+/*form*/
+.slide-check-box:checked+label {
+    transform: translateX(calc(-400px + 100%));
+}
+
+.slide-check-box:checked+label span::after {
+    background: rgb(255, 255, 255);
+    color: rgb(44, 111, 255);
+    border: 1px solid rgb(44, 111, 255);
+}
+
+.slide-check-box:not(:checked)+label span::after {
+    background: rgb(44, 111, 255);
+}
+
+.slide-check-box:not(:checked)+label span::after {
+    content: 'continue >>';
+}
+
+.slide-check-box:checked~form.sign-form .main-container {
+    transform: translateX(calc(-50% - 40px));
+    transition: 1s;
+}
+
+.slide-check-box:not(:checked)~form.sign-form .main-container {
+    transition: 1s;
 }
