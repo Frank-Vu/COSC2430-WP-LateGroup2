@@ -43,6 +43,7 @@ section#acc-type {
     flex-direction: row;
     justify-content: space-between;
     border: 2px solid black;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.4);
 }
 
 section#acc-type input[type=radio] {
