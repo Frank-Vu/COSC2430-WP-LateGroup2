@@ -238,7 +238,7 @@ section#acc-type .button span {
 }
 
 #vendor-sign .description {
-    background-color: rgb(255, 0, 72);
+    background-color: rgb(226, 0, 60);
 }
 
 #vendor-sign .desc-title {
@@ -246,7 +246,7 @@ section#acc-type .button span {
 }
 
 #vendor-sign .image-container {
-    background: linear-gradient(135deg, rgb(255, 52, 109), rgb(198, 0, 56));
+    background: linear-gradient(135deg, rgb(255, 44, 100), rgb(192, 0, 19));
 }
 
 #vendor-sign .desc-button {
@@ -456,7 +456,7 @@ section.create {
 }
 
 input#vendor:checked~label#vendor-main-slide {
-    background-color: #ff3333;
+    background-color: #ff1818;
     color: #eeeeee;
 }
 
