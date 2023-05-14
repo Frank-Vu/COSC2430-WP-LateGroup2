@@ -45,7 +45,16 @@ app.get('/vendor', (req, res) => {
     res.render('V_home');
 });
 
-
+//Render a About page with data based on the user's ID:
+app.get('/customer/:id', (req, res) => {
+    Customer.findById(req.params.id)
+        .then((customer) => {
+            res.render('C_aboutPage', { customer });
+        })
+        .catch((error) => {
+            console.log(error.massage);
+        });
+});
 
 
 //------------------Schemas:----------------------
@@ -98,10 +107,12 @@ app.post('/register-customer', async (req, res) => {
             profilePicture: req.body.profilePicture,
         });
         customer.save()
-            .catch((error) => {
-                res.send('Something is wrong');
+            .then(() => {
+                res.redirect('/login');
             })
-        res.send('Registration complete!')
+            .catch((error) => {
+                console.log(error.message);
+            });
 
     } catch (error) {
         res.send('Something is definitely wrong');
@@ -122,10 +133,12 @@ app.post('/register-shipper', async (req, res) => {
             profilePicture: req.body.profilePicture,
         });
         shipper.save()
-            .catch((error) => {
-                res.send(error.message);
+            .then(() => {
+                res.redirect('/login');
             })
-        res.redirect('/login');
+            .catch((error) => {
+                console.log(error.message);
+            });
 
     } catch (error) {
         res.send('Something is definitely wrong');
@@ -145,10 +158,12 @@ app.post('/register-vendor', async (req, res) => {
             profilePicture: req.body.profilePicture,
         });
         vendor.save()
-            .catch((error) => {
-                res.send('Something is wrong');
+            .then(() => {
+                res.redirect('/login');
             })
-        res.send('Registration complete!')
+            .catch((error) => {
+                console.log(error.message);
+            })
 
     } catch (error) {
         res.send('Something is definitely wrong');
@@ -166,8 +181,9 @@ app.post('/login/success', async (req, res) => {
             const result = bcrypt.compare(req.body.password, customer.password);
             if (result) {
                 console.log('Login SUCCESS as Customer!');
-                return res.redirect('/customer');
+                return res.redirect(`/customer/${customer.id}`);
             }
+
         }
 
         const shipper = await Shipper.findOne({ username: req.body.username });
