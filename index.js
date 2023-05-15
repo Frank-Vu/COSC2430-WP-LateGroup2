@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const fileUpload = require('express-fileupload');
 
 
 //Connect to MongoDB database USERS
@@ -20,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+//Use express-fileupload to handle upload files:
+app.use(fileUpload());
+
 //Render 'create-acc.ejs' as home page.
 app.get('/', (req, res) => {
     res.render('create-acc');
@@ -30,12 +34,17 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+//Render 'myaccount.ejs' as MyAccount page.
+/* app.get('/myacc', (req, res) => {
+    res.render('myaccount');
+}); */
+
 //-----------------Render a About page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            res.render('C_aboutPage', { user });
+            res.render('myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
@@ -76,18 +85,22 @@ const userSchema = new mongoose.Schema({
     dis_hub: String,
     b_name: String,
     b_address: String,
-    profilePicture: Buffer,
+    profilePicture: {
+        data: Buffer,
+        mimeType: String
+    }
 });
 //------------------------------------------------
 
 const User = mongoose.model('User', userSchema);
 
 //--------------Registration form:--------------------
-//Customer register:
+//User register:
 app.post('/register', async (req, res) => {
     try {
         const salt = await bcrypt.genSalt();
         const hasedPASS = await bcrypt.hash(req.body.password, salt);  //Hashing (encrypting) password with Bcrypt.
+
         const user = new User({
             role: req.body.role,
             username: req.body.username,
@@ -98,9 +111,12 @@ app.post('/register', async (req, res) => {
             dis_hub: req.body.dis_hub,
             b_name: req.body.b_name,
             b_address: req.body.b_address,
-            profilePicture: req.body.profilePicture,
+            profilePicture: {
+                data: req.files.profilePicture.data,
+                mimeType: req.files.profilePicture.mimetype
+            }
         });
-        user.save()
+        await user.save()
             .then(() => {
                 res.redirect('/login');
             })
@@ -109,7 +125,7 @@ app.post('/register', async (req, res) => {
             });
 
     } catch (error) {
-        res.send('Something is definitely wrong');
+        res.send(error.message);
     }
 });
 
