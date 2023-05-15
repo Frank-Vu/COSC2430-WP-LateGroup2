@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --font-family: 'Poppins', sans-serif;
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* || HEADER */
+/* | Sale Section */
+.sale-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.sale h1 {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    width: 500px;
+}
+
+.bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.book {
+    width: calc(30% - 40px);
+    margin-bottom: 40px;
+    color: var(--font-color-light);
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.book img {
+    width: 100%;
+    height: auto;
+    transition: .5s;
+    border: 10px solid var(--book-border-color);
+    z-index: -1;
+}
+
+.book h2 {
+    font-family: var(--font-family);
+    font-size: 24px;
+    color: var(--font-color-light);
+    margin: 20px 0 0;
+}
+
+.book h3 {
+    color: var(--font-color-light);
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+}
+
+.book p {
+    font-family: var(--font-family);
+    font-size: 18px;
+    text-decoration: none;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
