@@ -53,7 +53,8 @@
             </div>
         </label>
         <span>CUSTOMER ACCOUNT</span>
-        <form method="post" class="sign-form" action="/register-customer">
+        <form method="post" class="sign-form" action="/register">
+            <input type="hidden" id="role" name="role" value="Customer">
             <label for="username">USER NAME:</label>
             <input type="text" name="username" id="username">
             <label for="password">PASSWORD:</label>
@@ -77,7 +78,8 @@
             </div>
         </label>
         <span>SHIPPER ACCOUNT</span>
-        <form method="post" class="sign-form" action="/register-shipper">
+        <form method="post" class="sign-form" action="/register">
+            <input type="hidden" id="role" name="role" value="Shipper">
             <label for="username">USER NAME:</label>
             <input type="text" name="username" id="username">
             <label for="password">PASSWORD:</label>
@@ -101,7 +103,8 @@
             </div>
         </label>
         <span>VENDOR ACCOUNT</span>
-        <form method="post" class="sign-form" action="/register-vendor">
+        <form method="post" class="sign-form" action="/register">
+            <input type="hidden" id="role" name="role" value="Vendor">
             <label for="username">USER NAME:</label>
             <input type="text" name="username" id="username">
             <label for="password">PASSWORD:</label>

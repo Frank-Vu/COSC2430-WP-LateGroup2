@@ -30,140 +30,83 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-//Render 'C_home.ejs' as customer page.
-app.get('/customer', (req, res) => {
-    res.render('C_home');
-});
-
-//Render 'S_home.ejs' as shipper page.
-app.get('/shipper', (req, res) => {
-    res.render('S_home');
-});
-
-//Render 'V_home.ejs' as vendor page.
-app.get('/vendor', (req, res) => {
-    res.render('V_home');
-});
-
-//Render a About page with data based on the user's ID:
-app.get('/customer/:id', (req, res) => {
-    Customer.findById(req.params.id)
-        .then((customer) => {
-            res.render('C_aboutPage', { customer });
+//-----------------Render a About page with data based on the user's:-----------------
+//For customer:
+app.get('/Customer/:id', (req, res) => {
+    User.findById(req.params.id)
+        .then((user) => {
+            res.render('C_aboutPage', { user });
         })
         .catch((error) => {
             console.log(error.massage);
         });
 });
 
+//For shipper:
+app.get('/Shipper/:id', (req, res) => {
+    User.findById(req.params.id)
+        .then((user) => {
+            res.render('S_aboutPage', { user });
+        })
+        .catch((error) => {
+            console.log(error.massage);
+        });
+});
+
+//For vendor:
+app.get('/Vendor/:id', (req, res) => {
+    User.findById(req.params.id)
+        .then((user) => {
+            res.render('V_aboutPage', { user });
+        })
+        .catch((error) => {
+            console.log(error.massage);
+        });
+});
+//--------------------------------------------------------------------------------------
 
 //------------------Schemas:----------------------
-//customer Schema:
-const customerSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
+    role: String,
     username: String,
     password: String,
     firstName: String,
     lastName: String,
     address: String,
-    profilePicture: Buffer,
-});
-
-//Shipper Schema:
-const shipperSchema = new mongoose.Schema({
-    username: String,
-    password: String,
-    firstName: String,
-    lastName: String,
     dis_hub: String,
-    profilePicture: Buffer,
-});
-
-//Vendor Schema:
-const vendorSchema = new mongoose.Schema({
-    username: String,
-    password: String,
     b_name: String,
     b_address: String,
     profilePicture: Buffer,
 });
 //------------------------------------------------
 
-const Customer = mongoose.model('Customer', customerSchema);
-const Shipper = mongoose.model('Shipper', shipperSchema);
-const Vendor = mongoose.model('Vendor', vendorSchema);
+const User = mongoose.model('User', userSchema);
 
 //--------------Registration form:--------------------
 //Customer register:
-app.post('/register-customer', async (req, res) => {
+app.post('/register', async (req, res) => {
     try {
         const salt = await bcrypt.genSalt();
-        const hasedPASS = await bcrypt.hash(req.body.password, salt);
-        const customer = new Customer({
+        const hasedPASS = await bcrypt.hash(req.body.password, salt);  //Hashing (encrypting) password with Bcrypt.
+        const user = new User({
+            role: req.body.role,
             username: req.body.username,
-            password: hasedPASS,
+            password: hasedPASS,            // Saving the user's password as the hashed password. 
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             address: req.body.address,
-            profilePicture: req.body.profilePicture,
-        });
-        customer.save()
-            .then(() => {
-                res.redirect('/login');
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-
-    } catch (error) {
-        res.send('Something is definitely wrong');
-    }
-});
-
-//Shipper register:
-app.post('/register-shipper', async (req, res) => {
-    try {
-        const salt = await bcrypt.genSalt();
-        const hasedPASS = await bcrypt.hash(req.body.password, salt);
-        const shipper = new Shipper({
-            username: req.body.username,
-            password: hasedPASS,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
             dis_hub: req.body.dis_hub,
-            profilePicture: req.body.profilePicture,
-        });
-        shipper.save()
-            .then(() => {
-                res.redirect('/login');
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-
-    } catch (error) {
-        res.send('Something is definitely wrong');
-    }
-});
-
-//Vendor register:
-app.post('/register-vendor', async (req, res) => {
-    try {
-        const salt = await bcrypt.genSalt();
-        const hasedPASS = await bcrypt.hash(req.body.password, salt);
-        const vendor = new Vendor({
-            username: req.body.username,
-            password: hasedPASS,
             b_name: req.body.b_name,
             b_address: req.body.b_address,
             profilePicture: req.body.profilePicture,
         });
-        vendor.save()
+        user.save()
             .then(() => {
                 res.redirect('/login');
             })
             .catch((error) => {
                 console.log(error.message);
-            })
+            });
 
     } catch (error) {
         res.send('Something is definitely wrong');
@@ -171,42 +114,23 @@ app.post('/register-vendor', async (req, res) => {
 });
 
 
-
-
 //-----------Login form---------------------
-app.post('/login/success', async (req, res) => {
+app.post('/login', async (req, res) => {
     try {
-        const customer = await Customer.findOne({ username: req.body.username });
-        if (customer) {
-            const result = bcrypt.compare(req.body.password, customer.password);
+        const user = await User.findOne({ username: req.body.username });
+        if (user) {
+            const result = bcrypt.compare(req.body.password, user.password);   //Use bcrypt to decrypt the password inside the database and compare it with the inputted password.
             if (result) {
-                console.log('Login SUCCESS as Customer!');
-                return res.redirect(`/customer/${customer.id}`);
+                console.log(`Login successful as ${user.role}!`);
+                return res.redirect(`/${user.role}/${user.id}`);
+            } else {
+                return res.send('Invalid credentials!');
             }
-
+        } else {
+            return res.send('Invalid credentials!');
         }
-
-        const shipper = await Shipper.findOne({ username: req.body.username });
-        if (shipper) {
-            const result = bcrypt.compare(req.body.password, shipper.password);
-            if (result) {
-                console.log('Login SUCCESS as Shipper!');
-                return res.redirect('/shipper');
-            }
-        }
-
-        const vendor = await Vendor.findOne({ username: req.body.username });
-        if (vendor) {
-            const result = bcrypt.compare(req.body.password, vendor.password);
-            if (result) {
-                console.log('Login SUCCESS as Vendor!');
-                return res.redirect('/vendor');
-            }
-        }
-        console.log('Invalid credentials!');
-
     } catch (error) {
-        console.log('Something is wrong!');
+        console.log(error.message);
     }
 });
 
@@ -316,3 +240,145 @@ app.post('/login/success', (req, res) => {
         })
 });
 //----------------------------------------------------- */
+
+/* app.post('/register-customer', async (req, res) => {
+    try {
+        const salt = await bcrypt.genSalt();
+        const hasedPASS = await bcrypt.hash(req.body.password, salt);
+        const customer = new Customer({
+            username: req.body.username,
+            password: hasedPASS,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            address: req.body.address,
+            profilePicture: req.body.profilePicture,
+        });
+        customer.save()
+            .then(() => {
+                res.redirect('/login');
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+    } catch (error) {
+        res.send('Something is definitely wrong');
+    }
+});
+
+//Shipper register:
+app.post('/register-shipper', async (req, res) => {
+    try {
+        const salt = await bcrypt.genSalt();
+        const hasedPASS = await bcrypt.hash(req.body.password, salt);
+        const shipper = new Shipper({
+            username: req.body.username,
+            password: hasedPASS,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            dis_hub: req.body.dis_hub,
+            profilePicture: req.body.profilePicture,
+        });
+        shipper.save()
+            .then(() => {
+                res.redirect('/login');
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+    } catch (error) {
+        res.send('Something is definitely wrong');
+    }
+});
+
+//Vendor register:
+app.post('/register-vendor', async (req, res) => {
+    try {
+        const salt = await bcrypt.genSalt();
+        const hasedPASS = await bcrypt.hash(req.body.password, salt);
+        const vendor = new Vendor({
+            username: req.body.username,
+            password: hasedPASS,
+            b_name: req.body.b_name,
+            b_address: req.body.b_address,
+            profilePicture: req.body.profilePicture,
+        });
+        vendor.save()
+            .then(() => {
+                res.redirect('/login');
+            })
+            .catch((error) => {
+                console.log(error.message);
+            })
+
+    } catch (error) {
+        res.send('Something is definitely wrong');
+    }
+}); */
+
+/* //-----------Login form---------------------
+app.post('/login/success', async (req, res) => {
+    try {
+        const customer = await Customer.findOne({ username: req.body.username });
+        if (customer) {
+            const result = bcrypt.compare(req.body.password, customer.password);
+            if (result) {
+                console.log('Login SUCCESS as Customer!');
+                return res.redirect(`/customer/${customer.id}`);
+            }
+
+        }
+
+        const shipper = await Shipper.findOne({ username: req.body.username });
+        if (shipper) {
+            const result = bcrypt.compare(req.body.password, shipper.password);
+            if (result) {
+                console.log('Login SUCCESS as Shipper!');
+                return res.redirect('/shipper');
+            }
+        }
+
+        const vendor = await Vendor.findOne({ username: req.body.username });
+        if (vendor) {
+            const result = bcrypt.compare(req.body.password, vendor.password);
+            if (result) {
+                console.log('Login SUCCESS as Vendor!');
+                return res.redirect('/vendor');
+            }
+        }
+        console.log('Invalid credentials!');
+
+    } catch (error) {
+        console.log('Something is wrong!');
+    }
+}); */
+
+/* app.post('/login', async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.body.username });
+        if (user) {
+            const result = bcrypt.compare(req.body.password, user.password);   //Use bcrypt to decrypt the password inside the database and compare it with the inputted password.
+            if (result) {
+                if (user.role == 'Customer') {
+                    console.log('Login successful as Customer!');
+                    return res.redirect(`/customer/${user.id}`);
+                } else if (user.role == 'Shipper') {
+                    console.log('Login successful as Shipper!');
+                    return res.redirect(`/shipper/${user.id}`);
+                } else if (user.role == 'Vendor') {
+                    console.log('Login successful as Vendor!');
+                    return res.redirect(`/vendor/${user.id}`);
+                } else if (error) {
+                    console.log(error.message);
+                }
+            } else {
+                return res.send('Invalid credentials!');
+            }
+        } else {
+            return res.send('Invalid credentials!');
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}); */
