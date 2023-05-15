@@ -403,6 +403,10 @@ section.create {
     opacity: 0.3;
 }
 
+.sign-form input:focus::placeholder {
+    color: transparent;
+}
+
 .sign-form select {
     height: 40px;
     margin-top: 10px;
@@ -421,7 +425,7 @@ section.create {
 
 .sign-form input:hover,
 .sign-form button:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /***TRANSITION***/
