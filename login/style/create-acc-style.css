@@ -299,7 +299,7 @@ section.create {
 
 .create h2 {
     align-self: center;
-    font-size: 27px;
+    font-size: 32px;
     font-weight: 500;
     word-spacing: 10px;
 }
@@ -542,6 +542,11 @@ section#acc-type:has(> input#vendor:checked)~section#main {
 
     .sign-form {
         width: 300px;
+    }
+
+    .create h2 {
+        align-self: center;
+        font-size: 27px;
     }
 
     .container {
