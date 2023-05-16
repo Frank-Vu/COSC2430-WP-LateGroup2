@@ -96,17 +96,39 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+
 //--------------Registration form:--------------------
 //User register:
 app.post('/register', async (req, res) => {
     try {
+        //----------Check conditions-------------
+        const usernameRegex = new RegExp(`^[a-zA-Z0-9]+$`) // Use regex to define what characters are allowed in Username (which is every upper and lowercase letters, and digits).
+        const passwordRegex = new RegExp(`^[a-zA-Z0-9!@#$%^&*]+$`); // Use regex to define what characters are allowed in Password (which is every upper and lowercase letters, digits and !@#$%^&*).
+
+        if (!usernameRegex.test(req.body.username)) { //If the recieved Username has other characters other than the specified characters, run the message.
+            return res.send('Username must contain only letters and numbers');
+        }
+
+        if (!passwordRegex.test(req.body.password)) { //If the recieved Password has other characters other than the specified special characters, run the message.
+            return res.send('Password must contain only letters, numbers, and these special characters: !@#$%^&*');
+        }
+
+        if (req.body.username.length < 8 || req.body.username.length > 15) {  //Check if received Username length is between 8 and 15 characters.
+            return res.send('Username must be between 8 and 15 characters.');
+        }
+
+        if (req.body.password.length < 8 || req.body.password.length > 20) {  //Check if received Password length is between 8 and 20 characters.
+            return res.send('Password must be between 8 and 20 characters.');
+        }
+
+
         const salt = await bcrypt.genSalt();
         const hasedPASS = await bcrypt.hash(req.body.password, salt);  //Hashing (encrypting) password with Bcrypt.
 
         const user = new User({
             role: req.body.role,
             username: req.body.username,
-            password: hasedPASS,            // Saving the user's password as the hashed password. 
+            password: hasedPASS,
             full_name: req.body.full_name,
             address: req.body.address,
             distribution_hub: req.body.distribution_hub,
@@ -117,6 +139,7 @@ app.post('/register', async (req, res) => {
                 mimeType: req.files.profilePicture.mimetype
             }
         });
+
         await user.save()
             .then(() => {
                 res.redirect('/login');
@@ -127,7 +150,7 @@ app.post('/register', async (req, res) => {
 
     } catch (error) {
         console.log(error.message);
-        res.send(`You might have not entered in all of the requirements. Please go back to the register page to restart.`);
+        res.send(error.message);
     }
 });
 
