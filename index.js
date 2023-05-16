@@ -77,14 +77,16 @@ app.get('/Vendor/:id', (req, res) => {
 //------------------Schemas:----------------------
 const userSchema = new mongoose.Schema({
     role: String,
-    username: String,
+    username: {
+        type: String,
+        unique: true
+    },
     password: String,
-    firstName: String,
-    lastName: String,
+    full_name: String,
     address: String,
-    dis_hub: String,
-    b_name: String,
-    b_address: String,
+    distribution_hub: String,
+    business_name: String,
+    business_address: String,
     profilePicture: {
         data: Buffer,
         mimeType: String
@@ -105,12 +107,11 @@ app.post('/register', async (req, res) => {
             role: req.body.role,
             username: req.body.username,
             password: hasedPASS,            // Saving the user's password as the hashed password. 
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            full_name: req.body.full_name,
             address: req.body.address,
-            dis_hub: req.body.dis_hub,
-            b_name: req.body.b_name,
-            b_address: req.body.b_address,
+            distribution_hub: req.body.distribution_hub,
+            business_name: req.body.business_name,
+            business_address: req.body.business_address,
             profilePicture: {
                 data: req.files.profilePicture.data,
                 mimeType: req.files.profilePicture.mimetype
@@ -125,7 +126,8 @@ app.post('/register', async (req, res) => {
             });
 
     } catch (error) {
-        res.send(error.message);
+        console.log(error.message);
+        res.send(`You might have not entered in all of the requirements. Please go back to the register page to restart.`);
     }
 });
 
