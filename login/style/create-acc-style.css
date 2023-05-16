@@ -310,7 +310,7 @@ section.create {
 
 .form-slider-button {
     position: absolute;
-    bottom: 100px;
+    bottom: 80px;
     right: 50px;
     cursor: pointer;
     z-index: 5;
@@ -414,7 +414,7 @@ section.create {
 }
 
 .sign-form button {
-    margin-top: 110px;
+    margin-top: 130px;
     height: 40px;
     width: 100%;
     font-size: 17px;
