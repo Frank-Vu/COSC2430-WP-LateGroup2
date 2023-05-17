@@ -85,13 +85,19 @@
                             <div class="input-box">
                                 <input type="hidden" name="role" id="role" value="Customer">
                                 <input type="text" name="username" id="username"
-                                    placeholder="- - Enter username here - -" required>
+                                    placeholder="- - Enter username here - -" minlength="8" maxlegnth="15"
+                                    pattern="^[a-zA-Z0-9]+$"
+                                    title="Username length must be between 8 to 15, contains only letters and numbers."
+                                    required>
                                 <label for="username">USER NAME:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="password" name="password" id="password"
-                                    placeholder="- - Enter password here - -" required onkeyup="validate_password()">
+                                    placeholder="- - Enter password here - -" onkeyup="validate_password()"
+                                    minlength="8" maxlegnth="20" pattern="^[a-zA-Z0-9!@#$%^&*]+$"
+                                    title="Password length must be between 8 to 20, contains only letters, numbers and special characters: !@#$%^&*"
+                                    required>
                                 <label for="password">PASSWORD:</label>
                             </div>
 
@@ -106,18 +112,18 @@
                         <div class="container hidden">
                             <div class="input-box">
                                 <input type="text" name="full_name" id="full-name"
-                                    placeholder="- - Enter your full name here - -" required>
+                                    placeholder="- - Enter your full name here - -" minlength="5" required>
                                 <label for="full-name">FULL NAME:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="text" name="address" id="address"
-                                    placeholder="E.g. 123 White St. Ward 1 HCM City" required>
+                                    placeholder="E.g. 123 White St. Ward 1 HCM City" minlength="5" required>
                                 <label for="address">ADDRESS:</label>
                             </div>
 
                             <div class="input-box">
-                                <input type="file" name="profilePicture" id="profile-picture">
+                                <input type="file" name="profilePicture" id="profile-picture" required>
                                 <label for="profile-picture">PROFILE PICTURE:</label>
                             </div>
 
@@ -181,19 +187,26 @@
                             <div class="input-box">
                                 <input type="hidden" name="role" id="role" value="Shipper">
                                 <input type="text" name="username" id="username"
-                                    placeholder="- - Enter username here - -" required>
+                                    placeholder="- - Enter username here - -" minlength="8" maxlegnth="20"
+                                    pattern="^[a-zA-Z0-9]+$"
+                                    title="Username length must be between 8 to 15, contains only letters and numbers."
+                                    required>
                                 <label for="username">USER NAME:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="password" name="password" id="password"
-                                    placeholder="- - Enter password here - -" required>
+                                    placeholder="- - Enter password here - -" onkeyup="validate_password()"
+                                    minlength="8" maxlegnth="20" pattern="^[a-zA-Z0-9!@#$%^&*]+$"
+                                    title="Password length must be between 8 to 20, contains only letters, numbers and special characters: !@#$%^&*"
+                                    required>
                                 <label for="password">PASSWORD:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="password" name="confirm_password" id="confirm_password"
-                                    placeholder="- - Confirm your password - -" required>
+                                    placeholder="- - Confirm your password - -" required onkeyup="validate_password()">
+                                <div id="wrong_pass_alert"></div>
                                 <label for="confirm_password">CONFIRM PASSWORD:</label>
                             </div>
                         </div>
@@ -202,7 +215,7 @@
                         <div class="container hidden">
                             <div class="input-box">
                                 <input type="text" name="full_name" id="full-name"
-                                    placeholder="- - Enter your full name here - -" required>
+                                    placeholder="- - Enter your full name here - -" minlength="5" required>
                                 <label for="full-name">FULL NAME:</label>
                             </div>
 
@@ -284,19 +297,26 @@
                             <div class="input-box">
                                 <input type="hidden" name="role" id="role" value="Vendor">
                                 <input type="text" name="username" id="username"
-                                    placeholder="- - Enter username here - -" required>
+                                    placeholder="- - Enter username here - -" minlength="8" maxlength="15"
+                                    pattern="^[a-zA-Z0-9]+$"
+                                    title="Username length must be between 8 to 15, contains only letters and numbers."
+                                    required>
                                 <label for="username">USER NAME:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="password" name="password" id="password"
-                                    placeholder="- - Enter password here - -" required>
+                                    placeholder="- - Enter password here - -" onkeyup="validate_password()"
+                                    minlength="8" maxlegnth="20" pattern="^[a-zA-Z0-9!@#$%^&*]+$"
+                                    title="Password length must be between 8 to 20, contains only letters, numbers and special characters: !@#$%^&*"
+                                    required>
                                 <label for="password">PASSWORD:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="password" name="confirm_password" id="confirm_password"
-                                    placeholder="- - Confirm your password - -" required>
+                                    placeholder="- - Confirm your password - -" required onkeyup="validate_password()">
+                                <div id="wrong_pass_alert"></div>
                                 <label for="confirm_password">CONFIRM PASSWORD:</label>
                             </div>
                         </div>
@@ -304,18 +324,18 @@
                         <div class="container hidden">
                             <div class="input-box">
                                 <input type="text" name="business_name" id="b-name"
-                                    placeholder="- - Enter your business name - -" required>
+                                    placeholder="- - Enter your business name - -" minlength="5" required>
                                 <label for="b-name">BUSINESS NAME:</label>
                             </div>
 
                             <div class="input-box">
                                 <input type="text" name="business_address" id="b-address"
-                                    placeholder="- - Enter your business address - -" required>
+                                    placeholder="- - Enter your business address - -" minlength="5" required>
                                 <label for="b-address">BUSINESS ADDRESS:</label>
                             </div>
 
                             <div class="input-box">
-                                <input type="file" name="profilePicture" id="profile-picture">
+                                <input type="file" name="profilePicture" id="profile-picture" required>
                                 <label for="profile-picture">PROFILE PICTURE:</label>
                             </div>
 
