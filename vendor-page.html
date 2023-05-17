@@ -11,7 +11,7 @@
 
 <body>
     <!--TITLE-->
-    <h1>VENDOR PAGE</h1>
+    <h1>Welcom to <span>Vendor</span> Page !</h1>
 
     <!--MAIN SECTION-->
     <section id="product-manage">
@@ -27,8 +27,51 @@
         <!--main contents-->
         <div class="main-container">
             <div class="slider">
-                <div class="sub-container"></div>
-                <div class="sub-container"></div>
+                <div class="sub-container" id="view-product">
+                    <h2>YOUR PRODUCTS:</h2>
+                    <span class="empty hidden">You don't have any products.</span>
+                    <div class="product-container">
+                        <!--delete this-->
+                        <div class="product-card">
+                            <a href="#" class="product-image">
+                                <img src="" alt="">
+                            </a>
+                            <div class="product-info">
+                                <a href="#" class="product-name">This is a product bla bla bla bla bla bla bla bla bla
+                                    bla baaaaaaaaaa</a>
+                                <span class="product-price">549.99</span>
+                            </div>
+                        </div>
+                        <!--------------->
+                    </div>
+                </div>
+
+                <div class="sub-container" id="add-product">
+                    <h2>ADD PRODUCTS</h2>
+                    <form id="product-add" method="get" action="">
+                        <div class="input-box">
+                            <input type="text" id="name" placeholder=" Enter name of your product ">
+                            <label for="name">Name:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="number" id="price" placeholder=" Enter price of your product ">
+                            <label for="price">Price: (in USD only)</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="file" id="image">
+                            <label for="image">Image of the product:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <textarea id="description" placeholder=" Enter description for your product "></textarea>
+                            <label for="description">Description:</label>
+                        </div>
+
+                        <button type="submit">ADD PRODUCT</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
