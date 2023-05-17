@@ -36,8 +36,73 @@ body {
     background-color: #f3f3f3;
 }
 
+/*slider*/
 section#product-manage {
     width: 80%;
     margin: 50px 10%;
 
+}
+
+.slider-radio {
+    display: none;
+}
+
+.slider-button-container {
+    margin: 0 5px;
+    display: flex;
+}
+
+.slider-button {
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-bottom: none;
+    border-top-left-radius: 20px 100%;
+    border-top-right-radius: 20px 100%;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/*main content*/
+.main-container {
+    width: calc(100% - 100px);
+    height: 500px;
+    padding: 50px;
+    border: 2px solid;
+}
+
+.slider {
+    width: calc(200% + 100px);
+    height: 200px;
+    background-color: aqua;
+    transition: 0.5s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-container{
+    width: calc((100% - 100px) / 2);
+    height: 100px;
+    background-color: red;
+}
+
+/*TRANSITIONS*/
+input#view:checked~.slider-button-container .slider-button#view-option {
+    background-color: blue;
+}
+
+input#view:checked~.main-container .slider{
+    transform: translateX(0);
+}
+
+input#add:checked~.slider-button-container .slider-button#add-option {
+    background-color: blue;
+}
+
+input#add:checked~.main-container .slider{
+    transform: translateX(calc((-50% - 50px)));
 }

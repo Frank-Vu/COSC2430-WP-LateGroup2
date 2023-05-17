@@ -10,17 +10,26 @@
 </head>
 
 <body>
-    <!--title-->
+    <!--TITLE-->
     <h1>VENDOR PAGE</h1>
 
-    <!--main-->
+    <!--MAIN SECTION-->
     <section id="product-manage">
-        <input type="radio" name="option-slider" id="view">
-        <input type="radio" name="option-slider" id="add">
+        <!--slider-->
+        <input class="slider-radio" type="radio" name="option-slider" id="view" checked>
+        <input class="slider-radio" type="radio" name="option-slider" id="add">
 
         <div class="slider-button-container">
             <label class="slider-button" id="view-option" for="view"><span>VIEW YOUR PRODUCT</span></label>
-            <label class="slider-button" id="add-option" for="view"><span>ADD MORE PRODUCT</span></label>
+            <label class="slider-button" id="add-option" for="add"><span>ADD MORE PRODUCT</span></label>
+        </div>
+
+        <!--main contents-->
+        <div class="main-container">
+            <div class="slider">
+                <div class="sub-container"></div>
+                <div class="sub-container"></div>
+            </div>
         </div>
     </section>
 </body>
