@@ -1,4 +1,4 @@
-pls change title of breadcrumb and add link into items
+pls change title of breadcrumb and add link into them
 
 to change contents:
 
