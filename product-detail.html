@@ -17,7 +17,9 @@
         <li>product name</li>
     </ul>
 
-    <!--main-->
+    <!--MAIN-->
+    
+    <!--product main information-->
     <section id="product-info">
         <div class="image-container">
             <img src="assets/aa.avif" alt="product-image">
@@ -35,29 +37,47 @@
         </div>
     </section>
 
+    <!--product description-->
     <section id="product-description">
-        <input type="radio" name="desc-slide" id="description">
-        <label for="description">Description</label>
+        <!--slider-->
+        <input class="slider-radio" type="radio" name="desc-slide" id="description" checked>
+        <input class="slider-radio" type="radio" name="desc-slide" id="rating-review">
+        <input class="slider-radio" type="radio" name="desc-slide" id="discussion">
 
-        <input type="radio" name="desc-slide" id="rating">
-        <label for="rating">Ratings</label>
-
-        <input type="radio" name="desc-slide" id="faq">
-        <label for="faq">FAQs</label>
-
-        <div class="main-container">
-            <div class="sub-container" id="description">
-                <p></p>
-            </div>
-
-            <div class="sub-container undeveloped" id="rating">
-            </div>
-
-            <div class="sub-container undeveloped" id="faq">
-            </div>
+        <div class="slider-button-container">
+            <label class="slider-button" id="desc" for="description"><span>Description</span></label>
+            <label class="slider-button" id="rr" for="rating-review"><span>Ratings & Reviews</span></label>
+            <label class="slider-button" id="disc" for="discussion"><span>Discussions</span></label>
         </div>
 
+        <!--main content-->
+        <div class="main-container">
+            <div class="sub-container" id="description-slide">
+                <h1 class="title">description:</h1>
+                <div class="content">
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                    <p>description bla bla bla</p>
+                </div>
+            </div>
 
+            <div class="sub-container undeveloped" id="rating-review-slide">
+                <h1 class="title">ratings & reviews:</h1>
+                <div class="content">
+                </div>
+            </div>
+
+            <div class="sub-container undeveloped" id="discussion-slide">
+                <h1 class="title">discussions:</h1>
+                <div class="content">
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 
