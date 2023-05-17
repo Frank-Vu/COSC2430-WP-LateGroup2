@@ -39,7 +39,7 @@ app.get('/login', (req, res) => {
     res.render('myaccount');
 }); */
 
-//-----------------Render a About page with data based on the user's:-----------------
+//-----------------Render My Account page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
     User.findById(req.params.id)

@@ -165,7 +165,7 @@ h3 {
     font-size: 18px;
 }
 
-.main-container#log-out button{
+.main-container#log-out button {
     height: 50px;
     width: 100px;
     margin: 30px;
@@ -175,13 +175,13 @@ h3 {
     font-weight: 700;
 }
 
-.main-container#log-out button:hover{
+.main-container#log-out button:hover {
     opacity: 1.5;
     background-color: rgb(255, 0, 0);
     border: 5px outset rgb(255, 104, 104);
 }
 
-.main-container#log-out button:active{
+.main-container#log-out button:active {
     border: 5px inset rgb(255, 104, 104);
 }
 
