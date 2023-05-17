@@ -167,12 +167,13 @@ button.add-to-cart {
 
 /*DESCRIPTION*/
 
-/*slider*/
 section#product-description {
     width: 80%;
     margin: 80px 10%;
     overflow: hidden;
 }
+
+/*slider*/
 
 .slider-radio {
     display: none;
@@ -319,6 +320,10 @@ input#discussion:checked~.main-container {
         width: 70%;
         height: 400px;
         margin: 50px 15%;
+    }
+
+    .slider-button span {
+        font-size: 18px;
     }
 }
 
