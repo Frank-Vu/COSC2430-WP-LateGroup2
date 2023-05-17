@@ -1,20 +1,36 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose
-    .connect('mongodb+srv://mandatvippro:hello@cluster0.tkq3jsi.mongodb.net/?retryWrites=true&w=majority')
-    .then(()=>console.log('Connect to MongoDB Atlas'))
-    .catch((error)=>console.log(error.message));
-
-const productSchema = new mongoose.Schema({
-    title: {type: String, require: true, unquie: true},
-    desc: {type: String, require: true}, 
-    categories: {type: String, require: true},
-    price: {type: Number, require: true},
+const productSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      minlength: 10,
+      maxlength: 20,
+      required: true,
     },
-        {
-        timestamps:true
-    });
+    price: {
+      type: Number,
+      min: 0.01,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      maxlength: 500,
+      required: true,
+    },
+    vendor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Vendor",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-const Product = mongoose.model('Product', productSchema)  
+const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;

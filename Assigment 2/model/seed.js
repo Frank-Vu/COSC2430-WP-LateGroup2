@@ -1,26 +1,26 @@
 const product =[ {
-    title: 'p1',
-    desc: 'lorem',
-    categories: 'equipment',
+    name: 'bruh',
     price: 1000,
+    description: 'lol',
+    
 },
 {
-    title: 'p2',
-    desc: 'lor',
-    categories: 'equipment',
-    price: 100,
+    name: 'bruh',
+    price: 1000,
+    description: 'lol',
+    
 },
 {
-    title: 'p3',
-    desc: 'lor',
-    categories: 'supplement',
-    price: 10,
+    name: 'bruh',
+    price: 1000,
+    description: 'lol',
+    
 },
 {
-    title: 'p4',
-    desc: 'lor',
-    categories: 'coach',
-    price: 1,
+    name: 'bruh',
+    price: 1000,
+    description: 'lol',
+    
 },
 ]
 

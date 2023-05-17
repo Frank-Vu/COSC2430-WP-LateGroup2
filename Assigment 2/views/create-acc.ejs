@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/create-acc-style.css">
+    <script src="/js/slider.js"></script>
+    <script src="/js/verify.js"></script>
+    <title>Create Account</title>
+</head>
+
+<body>
+    <!--ACCOUNT TYPE SELECTIONS-->
+    <section id="acc-type">
+        <input type="radio" name="account-type" id="customer" checked="checked">
+        <input type="radio" name="account-type" id="shipper">
+        <input type="radio" name="account-type" id="vendor">
+
+        <label class="button" for="customer" id="customer-main-slider">
+            <h1>CUSTOMER</h1>
+        </label>
+        <label class="button" for="shipper" id="shipper-main-slider">
+            <h1>SHIPPER</h1>
+        </label>
+        <label class="button" for="vendor" id="vendor-main-slider">
+            <h1>VENDOR</h1>
+        </label>
+    </section>
+
+    <!--CREATE ACCOUNT FORMS-->
+    <section id="main">
+
+        <!--Customer-->
+        <section class="create" id="customer-sign">
+            <div class="form-container">
+                <div class="description">
+                    <div class="slider">
+                        <!--Radios for functioning-->
+                        <input type="radio" class="radio-reg" name="customer-desc-slide" id="customer-pos1" checked>
+                        <input type="radio" class="radio-reg" name="customer-desc-slide" id="customer-pos2">
+                        <input type="radio" class="radio-reg" name="customer-desc-slide" id="customer-pos3">
+
+                        <!--Contents-->
+                        <div class="slides">
+                            <div class="desc-content">
+                                <span class="desc-title">Purchase Gym Goods</span>
+                                <div class="image-container">
+                                    <img src="/img/products.png" alt="products">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Book Personal Trainer</span>
+                                <div class="image-container">
+                                    <img src="/img/personal.png" alt="gym-pt">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Gym Memberships</span>
+                                <div class="image-container">
+                                    <img src="/img/member-card.png" alt="memberships">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Buttons-->
+                        <div class="desc-button-container">
+                            <label for="customer-pos1" class="desc-button"></label>
+                            <label for="customer-pos2" class="desc-button"></label>
+                            <label for="customer-pos3" class="desc-button"></label>
+                        </div>
+
+                    </div>
+                </div>
+                <input class="slide-check-box" type="checkbox" id="customer-slide">
+                <label class="form-slider-button" for="customer-slide"><span></span></label>
+                <form method="post" class="sign-form" name="account_form_customer" id="account-form-customer"
+                    action="/register" enctype="multipart/form-data">
+                    <h2>CUSTOMER ACCOUNT</h2>
+                    <div class="main-container">
+                        <div class="container">
+                            <div class="input-box">
+                                <input type="hidden" name="role" id="role" value="Customer">
+                                <input type="text" name="username" id="username"
+                                    placeholder="- - Enter username here - -" required>
+                                <label for="username">USER NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="password" id="password"
+                                    placeholder="- - Enter password here - -" required onkeyup="validate_password()">
+                                <label for="password">PASSWORD:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="confirm_password" id="confirm_password"
+                                    placeholder="- - Confirm your password - -" required onkeyup="validate_password()">
+                                <div id="wrong_pass_alert"></div>
+                                <label for="confirm_password">CONFIRM PASSWORD:</label>
+                            </div>
+                        </div>
+
+                        <div class="container hidden">
+                            <div class="input-box">
+                                <input type="text" name="full_name" id="full-name"
+                                    placeholder="- - Enter your full name here - -" required>
+                                <label for="full-name">FULL NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="text" name="address" id="address"
+                                    placeholder="E.g. 123 White St. Ward 1 HCM City" required>
+                                <label for="address">ADDRESS:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="file" name="profilePicture" id="profile-picture">
+                                <label for="profile-picture">PROFILE PICTURE:</label>
+                            </div>
+
+                            <button type="submit" id="create_submit">Create Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!--Shipper-->
+        <section class="create" id="shipper-sign">
+            <div class="form-container">
+                <div class="description">
+                    <div class="slider">
+                        <!--Radios for functioning-->
+                        <input type="radio" class="radio-reg" name="shipper-desc-slide" id="shipper-pos1" checked>
+                        <input type="radio" class="radio-reg" name="shipper-desc-slide" id="shipper-pos2">
+                        <input type="radio" class="radio-reg" name="shipper-desc-slide" id="shipper-pos3">
+
+                        <!--Contents-->
+                        <div class="slides">
+                            <div class="desc-content">
+                                <span class="desc-title">Join our shipper team!</span>
+                                <div class="image-container">
+                                    <img src="/img/delivery-truck.png" alt="shipper">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Payment For Each Order</span>
+                                <div class="image-container">
+                                    <img src="/img/money.png" alt="money">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Employee Care Policy</span>
+                                <div class="image-container">
+                                    <img src="/img/health-insurance.png" alt="health-insurance">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Buttons-->
+                        <div class="desc-button-container">
+                            <label for="shipper-pos1" class="desc-button"></label>
+                            <label for="shipper-pos2" class="desc-button"></label>
+                            <label for="shipper-pos3" class="desc-button"></label>
+                        </div>
+
+                    </div>
+                </div>
+                <input class="slide-check-box" type="checkbox" id="shipper-slide">
+                <label class="form-slider-button" for="shipper-slide"><span></span></label>
+                <form method="post" class="sign-form" name="account_form_shipper" id="account-form-shipper"
+                    action="/register" enctype="multipart/form-data">
+                    <h2>SHIPPER ACCOUNT</h2>
+                    <div class="main-container">
+                        <div class="container">
+                            <div class="input-box">
+                                <input type="hidden" name="role" id="role" value="Shipper">
+                                <input type="text" name="username" id="username"
+                                    placeholder="- - Enter username here - -" required>
+                                <label for="username">USER NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="password" id="password"
+                                    placeholder="- - Enter password here - -" required>
+                                <label for="password">PASSWORD:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="confirm_password" id="confirm_password"
+                                    placeholder="- - Confirm your password - -" required>
+                                <label for="confirm_password">CONFIRM PASSWORD:</label>
+                            </div>
+                        </div>
+
+
+                        <div class="container hidden">
+                            <div class="input-box">
+                                <input type="text" name="full_name" id="full-name"
+                                    placeholder="- - Enter your full name here - -" required>
+                                <label for="full-name">FULL NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <select name="distribution_hub" id="dis-hub" required>
+                                    <option value='' disabled selected>&#60 - - - Not Selected - - - &#62</option>
+                                    <option value='1'>Distribution 1</option>
+                                    <option value='2'>Distribution 2</option>
+                                    <option value='3'>Distribution 3</option>
+                                    <option value='4'>Distribution 4</option>
+                                    <option value='5'>Distribution 5</option>
+                                    <!--ADD OPTIONS WITH VALUES HERE-->
+                                </select>
+                                <label for="dis-hub">DISTRIBUTION HUB:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="file" name="profilePicture" id="profile-picture">
+                                <label for="profile-picture">PROFILE PICTURE:</label>
+                            </div>
+
+                            <button type="submit" id="create_submit">Create Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!--Vendor-->
+        <section class="create" id="vendor-sign">
+            <div class="form-container">
+                <div class="description">
+                    <div class="slider">
+                        <!--Radios for functioning-->
+                        <input type="radio" class="radio-reg" name="vendor-desc-slide" id="vendor-pos1" checked>
+                        <input type="radio" class="radio-reg" name="vendor-desc-slide" id="vendor-pos2">
+                        <input type="radio" class="radio-reg" name="vendor-desc-slide" id="vendor-pos3">
+
+                        <!--Contents-->
+                        <div class="slides">
+                            <div class="desc-content">
+                                <span class="desc-title">Connect Your Store To Us</span>
+                                <div class="image-container">
+                                    <img src="/img/integration.png" alt="co-operation">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Sell Your Product/Service</span>
+                                <div class="image-container">
+                                    <img src="/img/sell.png" alt="sell">
+                                </div>
+                            </div>
+
+                            <div class="desc-content">
+                                <span class="desc-title">Free Product Transportation</span>
+                                <div class="image-container">
+                                    <img src="/img/no-money.png" alt="free">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Buttons-->
+                        <div class="desc-button-container">
+                            <label for="vendor-pos1" class="desc-button"></label>
+                            <label for="vendor-pos2" class="desc-button"></label>
+                            <label for="vendor-pos3" class="desc-button"></label>
+                        </div>
+
+                    </div>
+                </div>
+                <input class="slide-check-box" type="checkbox" id="vendor-slide">
+                <label class="form-slider-button" for="vendor-slide"><span></span></label>
+                <form method="post" class="sign-form" name="account_form_vendor" id="account-form-vendor"
+                    action="/register" enctype="multipart/form-data">
+                    <h2>VENDOR ACCOUNT</h2>
+                    <div class="main-container">
+                        <div class="container">
+                            <div class="input-box">
+                                <input type="hidden" name="role" id="role" value="Vendor">
+                                <input type="text" name="username" id="username"
+                                    placeholder="- - Enter username here - -" required>
+                                <label for="username">USER NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="password" id="password"
+                                    placeholder="- - Enter password here - -" required>
+                                <label for="password">PASSWORD:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="confirm_password" id="confirm_password"
+                                    placeholder="- - Confirm your password - -" required>
+                                <label for="confirm_password">CONFIRM PASSWORD:</label>
+                            </div>
+                        </div>
+
+                        <div class="container hidden">
+                            <div class="input-box">
+                                <input type="text" name="business_name" id="b-name"
+                                    placeholder="- - Enter your business name - -" required>
+                                <label for="b-name">BUSINESS NAME:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="text" name="business_address" id="b-address"
+                                    placeholder="- - Enter your business address - -" required>
+                                <label for="b-address">BUSINESS ADDRESS:</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="file" name="profilePicture" id="profile-picture">
+                                <label for="profile-picture">PROFILE PICTURE:</label>
+                            </div>
+
+                            <button type="submit" id="create_submit">Create Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+
+    <div class="background"></div>
+</body>
+
+</html>
