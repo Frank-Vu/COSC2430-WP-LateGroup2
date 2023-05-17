@@ -69,3 +69,53 @@ body {
 .breadcrumb li a:hover {
     text-decoration: underline;
 }
+
+section#product-info {
+    width: 60%;
+    height: 400px;
+    margin: 50px 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-container{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.image-container img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.product-detail{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.name{
+    margin-top: 50px;
+    text-transform: capitalize;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.vendor{
+    font-weight: 300;
+}
+
+.price{
+    margin-top: 50px;
+    color: green;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.price::after{
+    content: ' $';
+    font-size: 15px;
+}
