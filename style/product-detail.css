@@ -74,8 +74,8 @@ body {
 /*MAIN INFORMATION*/
 section#product-info {
     width: 60%;
-    height: 400px;
-    margin: 50px 20%;
+    height: 370px;
+    margin: 100px 20% 0 20%;
     display: flex;
     justify-content: space-between;
 }
@@ -169,7 +169,7 @@ button.add-to-cart {
 
 section#product-description {
     width: 80%;
-    margin: 80px 10%;
+    margin: 50px 10%;
     overflow: hidden;
 }
 
@@ -240,7 +240,7 @@ h1.title {
     font-size: 27px;
 }
 
-.content{
+.content {
     position: relative;
     width: 85%;
     margin: 50px calc(7.5% - 50px);
@@ -249,14 +249,14 @@ h1.title {
     font-size: 16px;
 }
 
-.undeveloped .content{
+.undeveloped .content {
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.undeveloped .content::after{
+.undeveloped .content::after {
     content: 'XXX This page is under development. XXX';
     color: rgba(0, 0, 0, 0.5);
     font-size: 20px;
