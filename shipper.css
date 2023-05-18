@@ -87,22 +87,22 @@ h2 {
 .order-card {
     margin-top: 30px;
     width: calc(100% - 20px);
-    height: 100px;
+    height: 130px;
     padding: 10px;
     display: flex;
     align-items: center;
     outline: 1px solid;
 }
 
-#order-id{
-    margin-left: -10px;
+#order-id {
+    width: 5%;
+    min-width: 50px;
     font-size: 22px;
-    padding: 20px;
     display: flex;
     justify-content: center;
 }
 
-#order-id::before{
+#order-id::before {
     content: '#';
     font-size: 16px;
 }
@@ -113,12 +113,18 @@ h2 {
     flex-direction: column;
 }
 
+.sub-container:not(:first-of-type) {
+    margin-left: 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
 #image {
     height: 100px;
-    width: 100px;
-    justify-content: flex-start;
+    min-width: 100px;
+    width: 10%;
+    justify-content: center;
     align-items: center;
-    background-color: aqua;
 }
 
 #image img {
@@ -127,17 +133,91 @@ h2 {
 }
 
 #customer-info {
-    width: 300px;
+    width: 35%;
 }
 
 #product-info {
-    width: 200px;
+    width: 25%;
 }
 
 #status-box {
-    width: 150px;
+    width: 25%;
 }
 
-.info{
+.order-header {
+    font-size: 18px;
+    font-weight: 700;
+}
 
+.info {
+    font-size: 15px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.added-info {
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: 300;
+}
+
+#status {
+    color: green;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+form#change-order-status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+form#change-order-status * {
+    cursor: pointer;
+}
+
+form#change-order-status input {
+    width: 10px;
+}
+
+form#change-order-status label {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+form#change-order-status label:hover {
+    text-decoration: underline;
+}
+
+form#change-order-status input:hover+label {
+    text-decoration: underline;
+}
+
+form#change-order-status button {
+    margin-top: 5px;
+    align-self: flex-end;
+    background: rgb(255, 153, 0);
+    border: 1px solid;
+    padding: 2px 10px;
+}
+
+form#change-order-status button:hover {
+    background: rgba(255, 153, 0, 0.5);
+}
+
+#customer-name{
+    text-transform: capitalize;
+}
+
+#total-price::after{
+    content: '$';
+    font-size: 12px;
+}
+
+@media (max-width: 1023px) {
+    section#main {
+        width: 90%;
+        margin: 0 5%;
+    }
 }
