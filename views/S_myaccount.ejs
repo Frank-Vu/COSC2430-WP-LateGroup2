@@ -83,7 +83,10 @@ SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with 
 
             <div class="main-container" id="log-out">
                 <h2>Log Out</h2>
-                <button>LOG OUT</button>
+                <form method="post" class="sign-form" name="account_form_vendor" action="/logout"
+                    enctype="multipart/form-data">
+                    <button type="submit">LOG OUT</button>
+                </form>
             </div>
     </section>
 </body>

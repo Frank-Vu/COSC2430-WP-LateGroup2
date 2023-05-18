@@ -78,6 +78,12 @@ app.get('/Vendor/:id', (req, res) => {
             console.log(error.massage);
         });
 });
+
+
+//Logout:
+app.post('/logout', (req, res) => {
+    res.redirect('/login');
+});
 //--------------------------------------------------------------------------------------
 
 //------------------Schemas:----------------------
