@@ -108,6 +108,7 @@ h2 {
 }
 
 .sub-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -126,18 +127,17 @@ h2 {
 }
 
 #customer-info {
-    width: calc((100% - 100px) * 0.5);
-    height: 100%;
+    width: 300px;
 }
 
 #product-info {
-    width: calc((100% - 100px) * 0.3);
+    width: 200px;
 }
 
 #status-box {
-    width: calc((100% - 100px) * 0.2);
+    width: 150px;
 }
 
 .info{
-    
+
 }
