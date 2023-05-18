@@ -1,15 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const multer = require("multer");
+const fileUpload = require('express-fileupload');
 const port = 3000;
 
 // Models
-const Order = require("./models/Order");
-const Customer = require("./models/Customer");
-const Product = require("./models/Product");
-const Vendor = require("./models/Vendor");
-const Shipper = require("./models/Shipper");
+const Order = require("./model/Order");
+const Customer = require("./model/Customer");
+const Product = require("./model/Product");
+const Vendor = require("./model/Vendor");
+const Shipper = require("./model/Shipper");
 
 // Express app
 const app = express();
@@ -17,20 +17,10 @@ const app = express();
 // Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Multer middleware for image upload
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-const upload = multer({ storage });
+app.use(fileUpload());
 
 // Routes
-app.post("/register/customer", async (req, res) => {
+/* app.post("/register/customer", async (req, res) => {
   const { name, email, password } = req.body;
   // Check if customer already exists
   const customerExists = await Customer.findOne({ email });
@@ -137,7 +127,7 @@ app.post("/my-account/change-profile-image", upload.single("profile-image"), asy
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
-});
+}); */
 
 app.get("/vendor/view-my-products", async (req, res) => {
   if (!req.session.user || !(req.session.user instanceof Vendor)) {
@@ -162,7 +152,10 @@ app.post("/vendor/add-new-product", upload.single("image"), async (req, res) => 
   const product = new Product({
     name,
     price,
-    image: req.file.filename,
+    image: {
+        data: req.files.data,
+        mimeType: req.files.data.mimetype,
+    },
     description,
     vendor: req.session.user._id,
   });
@@ -260,7 +253,6 @@ app.get("/shipper/orders", async (req, res) => {
     return res.redirect("/login");
   }
   const orders = await Order.find({
-    distributionHub: req.session.user.distributionHub,
     status: { $eq: "active" },
   }).populate("customer products");
   res.render("shipper-orders.hbs", { orders });
@@ -277,7 +269,7 @@ app.post("/shipper/orders/:orderId/change-status", async (req, res) => {
 });
 
 // Connect to MongoDB Atlas
-mongoose.connect('')
+mongoose.connect('mongodb+srv://datle:bruhbruh@cluster0.t1rzjtc.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>console.log('Connect to Mongodb Atlas'))
 .catch((error)=>console.log(error.message));
 

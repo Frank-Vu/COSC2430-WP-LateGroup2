@@ -1,26 +1,26 @@
 const product =[ {
-    name: 'bruh',
+    name: 'bruhbruhbruh',
     price: 1000,
     description: 'lol',
-    
+    vendor: 1,
 },
 {
     name: 'bruh',
     price: 1000,
     description: 'lol',
-    
+    vendor: 1,
 },
 {
     name: 'bruh',
     price: 1000,
     description: 'lol',
-    
+    vendor: 1,
 },
 {
     name: 'bruh',
     price: 1000,
     description: 'lol',
-    
+    vendor: 1,
 },
 ]
 
