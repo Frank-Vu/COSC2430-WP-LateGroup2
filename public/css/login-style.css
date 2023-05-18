@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap%27');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+html {
+    background: url('../assets/background.avif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+}
+
+section#login {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login h1 {
+    align-self: center;
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 30px;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 12px 6px rgba(16, 16, 16, 0.6),
+        1px 16px 10px rgba(16, 16, 16, 0.4),
+        1px 20px 35px rgba(16, 16, 16, 0.4),
+        1px 35px 60px rgba(16, 16, 16, 0.6);
+}
+
+#login-form {
+    width: 450px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid rgb(60, 60, 60);
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 1px rgb(60, 60, 60);
+}
+
+
+#login-form label {
+    font-size: 17px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-shadow: 1px 2px 3px rgb(44, 44, 44);
+}
+
+#login-form input {
+    margin-top: 10px;
+    height: 50px;
+    width: calc(100% - 20px);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0px 10px;
+    border: none;
+}
+
+#login-form label:nth-of-type(2) {
+    margin-top: 20px;
+}
+
+#login-form button {
+    margin-top: 50px;
+    height: 50px;
+    width: inherit;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(77, 148, 255);
+    border: none;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(104, 104, 104);
+}
+
+#login-form input:hover {
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+#login-form button:hover {
+    background-color: rgb(117, 172, 255);
+}
+
+#login-form input:active,
+#login-form button:active {
+    opacity: 0.7;
+}
+
+#login-form input:focus {
+    background-color: rgb(255, 255, 255);
+}
+
+#login-form input:focus::placeholder {
+    color: transparent;
+}
+
+span#create {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 30px 0 0 0;
+    color: rgb(255, 255, 255);
+    align-self: center;
+}
+
+span#create a {
+    position: relative;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 500;
+    z-index: 1;
+}
+
+span#create a::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    bottom: 2px;
+    left: 0;
+    background-color: rgb(80, 144, 255);
+    transition: ease-in-out 0.3s;
+    z-index: -1;
+}
+
+span#create a:hover::after {
+    height: 100%;
+    bottom: 0;
+}
+
+span#create a:hover {
+    background-size: 0 3px, 100% 3px;
+}
