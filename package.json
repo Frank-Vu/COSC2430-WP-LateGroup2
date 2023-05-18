@@ -1,25 +1,19 @@
 {
-  "name": "cosc2430-wp-lategroup2",
+  "name": "testing",
   "version": "1.0.0",
-  "description": "This package is for the LateGroup2's Website",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Frank-Vu/COSC2430-WP-LateGroup2.git"
-  },
-  "author": "Tung Vu",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Frank-Vu/COSC2430-WP-LateGroup2/issues"
-  },
-  "homepage": "https://github.com/Frank-Vu/COSC2430-WP-LateGroup2#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "mongodb": "^5.4.0",
+    "express-fileupload": "^1.4.0",
     "mongoose": "^7.1.0"
   }
 }

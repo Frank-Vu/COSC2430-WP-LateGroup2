@@ -80,30 +80,45 @@ h1 {
 /*left navbar*/
 .left-nav {
     position: fixed;
-    margin: 20px 100px;
+    margin-top: 40px;
+    margin-left: 60px;
     display: flex;
     flex-direction: column;
+}
+
+.left-nav span {
+    font-size: 19px;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 20px;
 }
 
 .left-nav-item {
     display: flex;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 22px;
     color: #000000;
-    background-color: aqua;
-    padding: 5px 20px 5px 10px;
-    margin: 10px 20px;
+    padding: 5px 20px;
+    margin: 20px 20px;
+}
+
+.left-nav-item:hover::before {
+    content: '→';
+    font-weight: 800;
+    margin-right: 10px;
 }
 
 
 /*main*/
 section#main {
-    margin-left: 350px;
+    margin-left: 300px;
+    margin-right: 5%;
     background-color: white;
     padding: 50px;
 }
 
 .main-container {
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -136,22 +151,22 @@ h3 {
     font-size: 17px;
 }
 
-.tired-of-naming {
+.container {
     display: flex;
     align-items: center;
 }
 
-.tired-of-naming .info-box {
-    margin-left: 100px;
+.container .info-box {
+    margin-left: 50px;
 }
 
-.tired-of-naming .info {
+.container .info {
     margin: 30px 0;
 }
 
 .profile-image {
-    width: 300px;
-    height: 300px;
+    max-width: 250px;
+    max-height: 250px;
     background-color: #dfdfdf;
 }
 
@@ -185,9 +200,17 @@ h3 {
     border: 5px inset rgb(255, 104, 104);
 }
 
-.left-nav-item#vendor,
-.main-container#vendor-info,
-.left-nav-item#shipper,
-.main-container#shipper-info {
+.hidden {
     display: none;
+}
+
+@media (max-width: 1023px) {
+    .left-nav {
+        display: none;
+    }
+
+    section#main {
+        margin-left: 5%;
+        width: calc(90% - 100px);
+    }
 }

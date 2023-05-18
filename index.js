@@ -50,7 +50,7 @@ app.get('/product-detail', (req, res) => {
 app.get('/Customer/:id', (req, res) => {
     User.find(req.params.id)
         .then((user) => {
-            res.render('myaccount', { user });
+            res.render('C_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
@@ -61,7 +61,7 @@ app.get('/Customer/:id', (req, res) => {
 app.get('/Shipper/:id', (req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            res.render('S_aboutPage', { user });
+            res.render('S_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
@@ -72,11 +72,17 @@ app.get('/Shipper/:id', (req, res) => {
 app.get('/Vendor/:id', (req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            res.render('V_aboutPage', { user });
+            res.render('V_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
         });
+});
+
+
+//Logout:
+app.post('/logout', (req, res) => {
+    res.redirect('/login');
 });
 //--------------------------------------------------------------------------------------
 
@@ -132,6 +138,21 @@ const productSchema = new mongoose.Schema({
     },
     description: String
 });
+
+//Shopping cart:
+const cartSchema = new mongoose.Schema({
+    customer_id: String,
+    vendor_id: String,
+    name: String,
+    price: String,
+    image: {
+        data: Buffer,
+        mimeType: String,
+    },
+    description: String
+})
+
+//
 //------------------------------------------------
 
 const User = mongoose.model('User', userSchema);
@@ -225,7 +246,7 @@ app.get(`/Vendor/:id/products`, (req, res) => {
     const user = User.findById(req.params.id)
         .then((user) => {
             if (!user) {
-                console.log(error.message);
+                console.log('Cannot find product.');
             } else if (user) {
                 const product = Product.find({ vendor_id: req.params.id })
                     .then((product) => {
@@ -241,6 +262,30 @@ app.get(`/Vendor/:id/products`, (req, res) => {
         });
 });
 //------------------------------------------------------
+
+//---------Product Detail----------------
+app.get('/Customer/:customer_id/product-detail/:product_id', (req, res) => {
+    const product = Product.findById(req.params.product_id)
+        .then((product) => {
+            if (!product) {
+                console.log('Cannot find product.');
+            } else if (product) {
+                const user = User.findById(product.vendor_id)
+                    .then((user) => {
+                        return res.render('product-detail', { product, user });
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+
+
+
 
 //Listening to port: 3000.
 app.listen(3000, () => {
