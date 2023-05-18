@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+body {
+    scroll-behavior: smooth;
+    margin: 0 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hidden {
+    display: none;
+}
