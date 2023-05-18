@@ -51,6 +51,11 @@ body{
     list-style: none;
     border-bottom: 1px solid var(--light);
 }
+.menu p{
+    padding:10px 0 10px 10px;   
+    margin-right: 12px;
+    font-size: 12px;
+}
 .menu ul li{
     padding:10px 0;
 }
