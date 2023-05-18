@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,48 @@
     <link rel="stylesheet" href="shipper.css">
     <title>Shipper Page</title>
 </head>
+
 <body>
-    
+    <!--TITLE-->
+    <h1>Shipper</h1>
+
+    <!--MAIN-->
+    <section id="main">
+        <h2>Orders:</h2>
+        <div class="main-container">
+            <div class="order-card">
+                <span class="info" id="order-id">50</span>
+
+                <div class="sub-container" id="image">
+                    <img src="tako.jpeg" alt="product-image">
+                </div>
+
+                <div class="sub-container" id="customer-info">
+
+                    <span class="info" id="customer-name">bob</span>
+                    <span class="info" id="customer-address">1 street ward 2 dis 3</span>
+                </div>
+
+                <div class="sub-container" id="product-info">
+                    <span class="info" id="product-name">Name</span>
+                    <span class="info" id="total-price">99.99</span>
+                </div>
+
+                <div class="sub-container" id="status-box">
+                    <span class="info" id="status">active</span>
+                    <form method="get" action="">
+                        <spanc class="status-title"></span>
+
+                            <input type="radio" name="status-update" id="delivered">
+                            <label for="delivered">delivered</label>
+
+                            <input type="radio" name="status-update" id="cancelled">
+                            <label for="cancelled">cancelled</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
