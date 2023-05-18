@@ -36,6 +36,10 @@ body {
     background-color: #f3f3f3;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /*BREAD CRUMB*/
 .breadcrumb {
     padding: 10px 16px;
