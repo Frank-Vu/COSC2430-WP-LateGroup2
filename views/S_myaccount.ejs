@@ -55,39 +55,46 @@ SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with 
                     </div>
                 </div>
             </div>
+        </div>
+        <form action="" name="change_profile_image" id="change-profile-image">
+            <label for="img-change">*Click here to change profile image*</label>
+            <input type="file" name="img-change" id="img-change">
 
-            <div class="main-container" id="shipper-info">
-                <h2>Shipping Details</h2>
-                <div class="sub-container">
-                    <h3>Shipper Information</h3>
-                    <div class="info-box">
-                        <span class="info">Distribution Hub:<span class="added-info">
-                                <%= user.distribution_hub %>
-                            </span></span>
-                    </div>
+            <button type="submit">submit</button>
+        </form>
+
+        <div class="main-container" id="shipper-info">
+            <h2>Shipping Details</h2>
+            <div class="sub-container">
+                <h3>Shipper Information</h3>
+                <div class="info-box">
+                    <span class="info">Distribution Hub:<span class="added-info">
+                            <%= user.distribution_hub %>
+                        </span></span>
                 </div>
             </div>
+        </div>
 
-            <div class="main-container" id="security">
-                <h2>Security</h2>
-                <div class="sub-container">
-                    <h3>Account Information</h3>
-                    <div class="info-box">
-                        <span class="info">Username:<span class="added-info">
-                                <%= user.username %>
-                            </span></span>
-                        <span class="info">Password:<span class="added-info">HIDDEN</span></span>
-                    </div>
+        <div class="main-container" id="security">
+            <h2>Security</h2>
+            <div class="sub-container">
+                <h3>Account Information</h3>
+                <div class="info-box">
+                    <span class="info">Username:<span class="added-info">
+                            <%= user.username %>
+                        </span></span>
+                    <span class="info">Password:<span class="added-info">HIDDEN</span></span>
                 </div>
             </div>
+        </div>
 
-            <div class="main-container" id="log-out">
-                <h2>Log Out</h2>
-                <form method="post" class="sign-form" name="account_form_vendor" action="/logout"
-                    enctype="multipart/form-data">
-                    <button type="submit">LOG OUT</button>
-                </form>
-            </div>
+        <div class="main-container" id="log-out">
+            <h2>Log Out</h2>
+            <form method="post" class="sign-form" name="account_form_vendor" action="/logout"
+                enctype="multipart/form-data">
+                <button type="submit">LOG OUT</button>
+            </form>
+        </div>
     </section>
 </body>
 
