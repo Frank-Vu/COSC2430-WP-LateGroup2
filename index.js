@@ -34,17 +34,23 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-//Render 'myaccount.ejs' as MyAccount page.
-/* app.get('/myacc', (req, res) => {
-    res.render('myaccount');
-}); */
+//Render 'shopping-cart.ejs' as Cart page.
+app.get('/cart', (req, res) => {
+    res.render('shopping-cart');
+});
+
+//Render 'product-detail.ejs' as product detail page.
+app.get('/product-detail', (req, res) => {
+    res.render('product-detail');
+});
+
 
 //-----------------Render My Account page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
-    User.findById(req.params.id)
+    User.find(req.params.id)
         .then((user) => {
-            res.render('myaccount', { user });
+            res.render('C_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
@@ -55,7 +61,7 @@ app.get('/Customer/:id', (req, res) => {
 app.get('/Shipper/:id', (req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            res.render('S_aboutPage', { user });
+            res.render('S_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
@@ -66,15 +72,22 @@ app.get('/Shipper/:id', (req, res) => {
 app.get('/Vendor/:id', (req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            res.render('V_aboutPage', { user });
+            res.render('V_myaccount', { user });
         })
         .catch((error) => {
             console.log(error.massage);
         });
 });
+
+
+//Logout:
+app.post('/logout', (req, res) => {
+    res.redirect('/login');
+});
 //--------------------------------------------------------------------------------------
 
 //------------------Schemas:----------------------
+//User information:
 const userSchema = new mongoose.Schema({
     role: String,
     username: {
@@ -113,9 +126,37 @@ const userSchema = new mongoose.Schema({
         mimeType: String,
     }
 });
+
+//Product information:
+const productSchema = new mongoose.Schema({
+    vendor_id: String,
+    name: String,
+    price: String,
+    image: {
+        data: Buffer,
+        mimeType: String,
+    },
+    description: String
+});
+
+//Shopping cart:
+const cartSchema = new mongoose.Schema({
+    customer_id: String,
+    vendor_id: String,
+    name: String,
+    price: String,
+    image: {
+        data: Buffer,
+        mimeType: String,
+    },
+    description: String
+})
+
+//
 //------------------------------------------------
 
 const User = mongoose.model('User', userSchema);
+const Product = mongoose.model('Product', productSchema);
 
 
 //--------------Registration form:--------------------
@@ -176,6 +217,75 @@ app.post('/login', async (req, res) => {
 
 
 //-----------------------------------------------------
+
+//--------------------EXPERIMENTAL!!!!!---------------------------
+//Adding products:
+app.post(`/Vendor/:id/products/update`, (req, res) => {
+    const product = new Product({
+        vendor_id: req.params.id,
+        name: req.body.name,
+        price: req.body.price,
+        image: {
+            data: req.files.image.data,
+            mimeType: req.files.image.mimetype
+        },
+        description: req.body.description
+    });
+    product.save()
+        .then(() => {
+            console.log(`Product saved successfully!`);
+            res.redirect(`/Vendor/${req.params.id}/products`);
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+
+//View products:
+app.get(`/Vendor/:id/products`, (req, res) => {
+    const user = User.findById(req.params.id)
+        .then((user) => {
+            if (!user) {
+                console.log('Cannot find product.');
+            } else if (user) {
+                const product = Product.find({ vendor_id: req.params.id })
+                    .then((product) => {
+                        return res.render('vendor-page', { product, user });
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+//------------------------------------------------------
+
+//---------Product Detail----------------
+app.get('/Customer/:customer_id/product-detail/:product_id', (req, res) => {
+    const product = Product.findById(req.params.product_id)
+        .then((product) => {
+            if (!product) {
+                console.log('Cannot find product.');
+            } else if (product) {
+                const user = User.findById(product.vendor_id)
+                    .then((user) => {
+                        return res.render('product-detail', { product, user });
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+
+
+
 
 //Listening to port: 3000.
 app.listen(3000, () => {

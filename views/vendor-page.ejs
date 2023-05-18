@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/vendor-page.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--TITLE-->
+    <h1>Welcom to <span>Vendor</span> Page !</h1>
+
+    <!--MAIN SECTION-->
+    <section id="product-manage">
+        <!--slider-->
+        <input class="slider-radio" type="radio" name="option-slider" id="view" checked>
+        <input class="slider-radio" type="radio" name="option-slider" id="add">
+
+        <div class="slider-button-container">
+            <label class="slider-button" id="view-option" for="view"><span>VIEW YOUR PRODUCT</span></label>
+            <label class="slider-button" id="add-option" for="add"><span>ADD MORE PRODUCT</span></label>
+        </div>
+
+        <!--main contents-->
+        <div class="main-container">
+            <div class="slider">
+                <div class="sub-container" id="view-product">
+                    <h2>YOUR PRODUCTS:</h2>
+                    <span class="empty hidden">You don't have any products.</span>
+                    <div class="product-container">
+                        <!--delete this-->
+                        <% for (let i=0; i < product.length; i++) { %>
+                            <div class="product-card">
+                                <a href="#" class="product-image">
+                                    <img src="data:<%= product[i].image.mimeType %>;base64,<%= product[i].image.data.toString('base64') %>"
+                                        alt="product image">
+                                </a>
+                                <div class="product-info">
+                                    <a href="#" class="product-name">
+                                        <%= product[i].name %>
+                                    </a>
+                                    <span class="product-price">
+                                        <%= product[i].price %>
+                                    </span>
+                                </div>
+                            </div>
+                            <% } %>
+                                <!--------------->
+                    </div>
+                </div>
+
+                <div class="sub-container" id="add-product">
+                    <h2>ADD PRODUCTS</h2>
+                    <form id="product-add" method="post" action="/Vendor/<%= user.id %>/products/update"
+                        enctype="multipart/form-data">
+                        <div class="input-box">
+                            <input type="text" id="name" name="name" placeholder=" Enter name of your product ">
+                            <label for="name">Name:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="number" id="price" name="price" placeholder=" Enter price of your product ">
+                            <label for="price">Price: (in USD only)</label>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="file" id="image" name="image">
+                            <label for="image">Image of the product:</label>
+                        </div>
+
+                        <div class="input-box">
+                            <textarea id="description" name="description"
+                                placeholder=" Enter description for your product "></textarea>
+                            <label for="description">Description:</label>
+                        </div>
+
+                        <button type="submit">ADD PRODUCT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
