@@ -204,6 +204,40 @@ h3 {
     display: none;
 }
 
+form#change-profile-image {
+    display: flex;
+    flex-direction: column;
+}
+
+form#change-profile-image *:not(:first-child) {
+    margin-top: 20px;
+}
+
+form#change-profile-image label {
+    color: black;
+    cursor: pointer;
+}
+
+form#change-profile-image label:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+form#change-profile-image label:active {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+form#change-profile-image button {
+    width: fit-content;
+    padding: 5px 20px;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
 @media (max-width: 1023px) {
     .left-nav {
         display: none;

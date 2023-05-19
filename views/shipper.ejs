@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/shipper.css">
+    <title>Shipper Page</title>
+</head>
+
+<body>
+    <!--TITLE-->
+    <h1>Shipper</h1>
+
+    <!--MAIN-->
+    <section id="main">
+        <h2>Orders:</h2>
+        <div class="main-container">
+            <div class="order-card">
+                <span id="order-id">50</span>
+
+                <div class="sub-container" id="image">
+                    <img src="tako.jpeg" alt="product-image">
+                </div>
+
+                <div class="sub-container" id="customer-info">
+                    <span class="order-header">Customer</span>
+                    <span class="info">Name:<span class="added-info" id="customer-name">bob</span></span>
+                    <span class="info">Adress:<span class="added-info" id="customer-address">1 street ward 2 dis
+                            3</span></span>
+                </div>
+
+                <div class="sub-container" id="product-info">
+                    <span class="order-header">Product</span>
+                    <span class="info">Name:<span class="added-info" id="product-name">product name</span></span>
+                    <span class="info">Price:<span class="added-info" id="total-price">99.99</span></span>
+                </div>
+
+                <div class="sub-container" id="status-box">
+                    <span class="order-header">Status:<span class="added-info" id="status">active</span></span>
+                    <form method="post" action="" name="status-update" id="change-order-status">
+                        <div class="small-container">
+                            <input type="radio" name="new-status" id="delivered">
+                            <label for="delivered">delivered</label>
+                        </div>
+
+                        <div class="small-container">
+                            <input type="radio" name="new-status" id="cancelled">
+                            <label for="cancelled">cancelled</label>
+                        </div>
+
+                        <button type="submit">Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
