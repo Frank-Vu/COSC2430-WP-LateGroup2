@@ -55,9 +55,10 @@ SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with 
                 </div>
             </div>
 
-            <form action="" name="change_profile_image" id="change-profile-image">
+            <form action="/<%= user.role %>/<%= user._id %>/pfp-update" method="post" name="change_profile_image"
+                id="change-profile-image" enctype="multipart/form-data">
                 <label for="img-change">*Click here to change profile image*</label>
-                <input type="file" name="img-change" id="img-change">
+                <input type="file" name="img_change" id="img-change">
 
                 <button type="submit">submit</button>
             </form>
