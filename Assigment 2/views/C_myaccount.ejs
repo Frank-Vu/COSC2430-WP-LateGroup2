@@ -1,0 +1,98 @@
+<!--INFOMATION ADDED: put in placeholders spans with class "added-info"-->
+
+<!--TYPES OF ACCOUNT:
+CUSTOMER: do nothing
+
+VENDOR: set classes ".left-nav-item#vendor .main-container#vendor-info" with "display:flex"
+
+SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with "display:flex"
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="/css/myaccount.css">
+</head>
+
+<body>
+    <!--Bread Crumb-->
+    <ul class="breadcrumb">
+        <li><a href="#">homepage</a></li>
+        <li>my account</li>
+    </ul>
+
+    <!--Title-->
+    <h1>My Account</h1>
+
+    <!--Nav bar-->
+    <nav class="left-nav">
+        <span>Navigation:</span>
+        <a class="left-nav-item" href="#main-info">My Details</a>
+        <a class="left-nav-item" href="#security">Security</a>
+        <a class="left-nav-item" href="#log-out">Log out</a>
+    </nav>
+
+    <!--Account-->
+    <section id="main">
+        <div class="main-container" id="main-info">
+            <h2>My Details</h2>
+            <div class="sub-container" id="personal-info">
+                <h3>Personal Information</h3>
+                <div class="container">
+                    <img class="profile-image info"
+                        src="data:<%= user.profilePicture.mimeType %>;base64,<%= user.profilePicture.data.toString('base64') %>"
+                        alt="profile-image">
+                    <div class="info-box">
+                        <span class="info">Name:<span class="added-info">
+                                <%= user.full_name %>
+                            </span></span>
+                    </div>
+                </div>
+            </div>
+
+            <form action="" name="change_profile_image" id="change-profile-image">
+                <label for="img-change">*Click here to change profile image*</label>
+                <input type="file" name="img-change" id="img-change">
+
+                <button type="submit">submit</button>
+            </form>
+
+            <div class="sub-container" id="accomodation">
+                <h3>Accomodations</h3>
+                <div class="info-box">
+                    <span class="info">Address:<span class="added-info">
+                            <% user.address %>
+                        </span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container" id="security">
+            <h2>Security</h2>
+            <div class="sub-container">
+                <h3>Account Information</h3>
+                <div class="info-box">
+                    <span class="info">Username:<span class="added-info">
+                            <%= user.username %>
+                        </span></span>
+                    <span class="info">Password:<span class="added-info">HIDDEN</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container" id="log-out">
+            <h2>Log Out</h2>
+            <form method="post" class="sign-form" name="account_form_vendor" action="/logout"
+                enctype="multipart/form-data">
+                <button type="submit">LOG OUT</button>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

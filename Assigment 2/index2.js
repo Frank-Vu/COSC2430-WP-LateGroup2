@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 
 
 //Connect to MongoDB database USERS
-mongoose.connect('mongodb+srv://khaiminh2001:minh123@bing-chilling.nrj7j40.mongodb.net/USERS?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://mandatvippro:bruh@cluster0.nzxajuv.mongodb.net/test-product-page?retryWrites=true&w=majority')
     .then(() => {
         console.log(`Connection established!`);
     })
@@ -48,7 +48,7 @@ app.get('/product-detail', (req, res) => {
 //-----------------Render My Account page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
-    User.find(req.params.id)
+    User.findById(req.params.id)
         .then((user) => {
             res.render('C_myaccount', { user });
         })
@@ -181,6 +181,7 @@ const User = mongoose.model('User', userSchema);
 const Product = mongoose.model('Product', productSchema);
 const Order = mongoose.model('Order', orderSchema);
 const OrderItem = mongoose.model('OrderItem', orderItemSchema);
+const Cart = mongoose.model('Cart', cartSchema);
 
 //--------------Registration form:--------------------
 //User register:
@@ -307,17 +308,17 @@ app.get(`/Vendor/:id/products`, (req, res) => {
         });
 }); */
 // Display all products
-app.get('/Customer/:id/products', (req, res) => {
+app.get('/Customer/:id/product-page', (req, res) => {
   Product.find()
       .then((products) => {
-          res.render('customer-products', { products });
+          res.render('product-page', { products });
       })
       .catch((error) => {
           console.log(error.message);
       });
 });
 // Filter products based on name and price 
-app.post('/Customer/:id/products/search', (req, res) => {
+app.post('/Customer/:id/product-page/search', (req, res) => {
   const { minPrice, maxPrice, productName } = req.body;
   const query = {
       price: { $gte: minPrice, $lte: maxPrice },
@@ -326,11 +327,22 @@ app.post('/Customer/:id/products/search', (req, res) => {
 
   Product.find(query)
       .then((products) => {
-          res.render('customer-products', { products });
+          res.render('product-page', { products });
       })
       .catch((error) => {
           console.log(error.message);
       });
+});
+
+// Get the shopping cart items for a customer
+app.get('/Customer/:id/shopping-cart', async (req, res) => {
+    try {
+        const cartItems = await Cart.find({ customer_id: req.params.id });
+        res.render('shopping-cart', { cartItems, customerId: req.params.id });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Error fetching cart items' });
+    }
 });
 
 // Add a product to the shopping cart
@@ -358,6 +370,18 @@ app.post('/Customer/:customer_id/add-to-cart/:product_id', (req, res) => {
           console.log(error.message);
       });
 });
+
+// Remove an item from the shopping cart
+app.delete('/Customer/:customer_id/remove-from-cart/:product_id', async (req, res) => {
+    try {
+      await Cart.findOneAndDelete({ customer_id: req.params.customer_id, product_id: req.params.product_id });
+      res.sendStatus(200);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ error: 'Error removing item from cart' });
+    }
+  });
+
 // Place an order
 app.post('/Customer/:id/place-order', (req, res) => {
   Cart.find({ customer_id: req.params.id })
@@ -391,7 +415,7 @@ app.post('/Customer/:id/place-order', (req, res) => {
 
           await Cart.deleteMany({ customer_id: req.params.id });
 
-          res.redirect(`/Customer/${req.params.id}/orders`);
+          res.redirect(`/Customer/${req.params.id}/shopping-cart`);
       })
       .catch((error) => {
           console.log(error.message);
@@ -402,7 +426,7 @@ app.post('/Customer/:id/place-order', (req, res) => {
 app.get('/Shipper/:id/orders', (req, res) => {
   Order.find({ shipper_id: req.params.id, status: 'active' })
       .then((orders) => {
-          res.render('shipper-orders', { orders });
+          res.render('shipper-page', { orders });
       })
       .catch((error) => {
           console.log(error.message);

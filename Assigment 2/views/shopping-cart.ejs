@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/shopping-cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="logo">
+                Gym<span>Shop</span>
+            </div>
+            <ul>
+                <li><i class="fa-regular fa-user"></i> User</li>
+            </ul>
+            <p>Name: </p>
+            <p>Phone:</p>
+            <p>Address: </p>
+            <p>Mail:</p>
+        
+        </div>
+        <div class="center">
+            <div class="search">
+                <div class="form">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search...">
+                    <button>Search</button>
+                </div>
+            </div>
+
+            <h2>PRODUCTS</h2>
+            <div class="list">
+                <% cartItems.forEach((item) => { %>
+                    <div class="item" data-key="<%= item._id %>">
+                        <div class="img">
+                            <img src="<%= item.image %>" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="title"><%= item.name %></div>
+                            <div class="des">
+                                <%= item.description %>
+                            </div>
+                            <div class="price">$<%= item.price %></div>
+                            <input type="number" class="count" min="1" value="1">
+                            <form action="/Customer/<%= customerId %>/remove-from-cart/<%= item._id %>" method="post">
+                                <button type="submit" class="remove"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+        <div class="cart">
+            <div class="name">CART</div>
+            <div class="listCart">
+                <% cartItems.forEach((item) => { %>
+                    <div class="item" data-key="<%= item._id %>">
+                        <div class="img">
+                            <img src="<%= item.image %>" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="title"><%= item.name %></div>
+                            <div class="price">$<%= item.price %></div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            <form action="/Customer/<%= customerId %>/place-order" method="post">
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
