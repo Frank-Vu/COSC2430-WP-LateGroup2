@@ -67,7 +67,7 @@ app.get('/view_add', (req, res) => {
 //-----------------Render My Account page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
-    User.find(req.params.id)    
+    User.findById(req.params.id)
         .then((user) => {
             res.render('C_myaccount', { user });
         })
@@ -410,13 +410,21 @@ app.get('/Customer/:id/product-details/:product_id', (req, res) => {
         });
 });
 
+app.get('/product-details/:product_id', (req, res) => {
+    const product_id = req.params.product_id;
+    Product.findById(product_id)
+        .then((product) => {
+            res.render('product-details', { product });
+        })
+})
+
 // Display all products
-app.get('/Customer/:customer_id/product-page', (req, res) => {
+app.get('/Customer/:customer_id/all-products', (req, res) => {
     Product.find({})
-        .then((products) => {
+        .then((product) => {
             const customer_id = User.findById(req.params.customer_id)
                 .then((customer_id) => {
-                    res.render('product-page', { products, customer_id: customer_id });
+                    res.render('all-products', { product, customer_id: customer_id });
                 })
         })
         .catch((error) => console.log(error.message));

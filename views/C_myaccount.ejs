@@ -1,3 +1,10 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
 <!--INFOMATION ADDED: put in placeholders spans with class "added-info"-->
 
 <!--TYPES OF ACCOUNT:
@@ -18,6 +25,7 @@ SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with 
         <ul class="breadcrumb">
             <li><a href="/">homepage</a></li>
             <li>my account</li>
+            <li><a href="/Customer/<%=user.id%>/all-products">All Proucts</a></li>
         </ul>
 
         <!--Title-->
@@ -61,7 +69,7 @@ SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with 
                     <h3>Accomodations</h3>
                     <div class="info-box">
                         <span class="info">Address:<span class="added-info">
-                                <% user.address %>
+                                <%= user.address %>
                             </span></span>
                     </div>
                 </div>
