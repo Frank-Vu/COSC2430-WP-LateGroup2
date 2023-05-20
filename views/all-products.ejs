@@ -6,24 +6,24 @@
 
     <body>
         <%- include ('partials/nav') %>
-            <% products.forEach(function(product){ %>
+            <%for(let i=0; i < product.lenght; i++){%>
                 <div class="product-card">
-                    <a href="/Customer/<%= customer_id.id %>/product-details/<%= product.id %>" type="button"
+                    <a href="/Customer/<%= customer_id.id %>/product-details/<%= product[i].id %>" type="button"
                         class="btn btn-primary" class="product-image">
-                        <img src="data:<%= product.image.mimeType %>;base64,<%= product.image.data.toString('base64') %>"
+                        <img src="data:<%= product[i].image.mimeType %>;base64,<%= product[i].image.data.toString('base64') %>"
                             alt="product">
                     </a>
                     <div class="product-info">
-                        <a href="/Customer/<%= customer_id.id %>/product-details/<%= product.id %>" type="button"
+                        <a href="/Customer/<%= customer_id.id %>/product-details/<%= product[i].id %>" type="button"
                             class="btn btn-primary" class="product-name">
-                            <%= product.name %>
+                            <%= product[i].name %>
                         </a>
                         <span class="product-price">
-                            <%= product.price %>
+                            <%= product[i].price %>
                         </span>
                     </div>
                 </div>
-                <% }); %>
+                <% }; %>
 
 
                     <%- include ('partials/footer') %>
