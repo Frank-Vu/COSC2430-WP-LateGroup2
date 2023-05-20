@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/product-detail.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Bread Crumb-->
+    <ul class="breadcrumb">
+        <li><a href="#">homepage</a></li>
+        <li><a href="#">category</a></li>
+        <li>product name</li>
+    </ul>
+
+    <!--MAIN-->
+
+    <!--product main information-->
+    <section id="product-info">
+        <div class="image-container">
+            <!--change contents here-->
+            <img src="/images/<%= product.image %>" alt="product-image">
+
+        </div>
+
+        <div class="product-detail">
+            <!--change contents here-->
+            <span class="name">
+                <%= product.name %>
+            </span>
+
+            <!--change contents here-->
+            <span class="vendor">
+                <%= user.business_name %>
+            </span>
+
+            <span class="distribution_hub">
+                <%= user.distribution_hub %>
+            </span>
+
+            <!--change contents here-->
+            <span class="price">
+                <%= product.price %>
+            </span>
+            <form method="post" action="/add-to-cart?customer_id=<%= customer_id %>&product_id=<%= product._id %>" name="add_to_cart" id="add-to-cart" enctype="multipart/form-data">
+                <button class="add-to-cart">
+                    <img src="/img/shopping-cart.png">
+                    <span>ADD TO CART</span>
+                </button>
+            </form>
+            
+        </div>
+    </section>
+
+    <!--product description-->
+    <section id="product-description">
+        <!--slider-->
+        <input class="slider-radio" type="radio" name="desc-slide" id="description" checked>
+        <input class="slider-radio" type="radio" name="desc-slide" id="rating-review">
+        <input class="slider-radio" type="radio" name="desc-slide" id="discussion">
+
+        <div class="slider-button-container">
+            <label class="slider-button" id="desc" for="description"><span>Description</span></label>
+            <label class="slider-button" id="rr" for="rating-review"><span>Ratings & Reviews</span></label>
+            <label class="slider-button" id="disc" for="discussion"><span>Discussions</span></label>
+        </div>
+
+        <!--main content-->
+        <div class="main-container">
+            <div class="sub-container" id="description-slide">
+                <h1 class="title">description:</h1>
+                <div class="content">
+                    <!--change contents here-->
+                    <%= product.description %>
+                </div>
+            </div>
+
+            <div class="sub-container undeveloped" id="rating-review-slide">
+                <h1 class="title">ratings & reviews:</h1>
+                <div class="content">
+                </div>
+            </div>
+
+            <div class="sub-container undeveloped" id="discussion-slide">
+                <h1 class="title">discussions:</h1>
+                <div class="content">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
