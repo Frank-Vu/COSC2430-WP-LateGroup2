@@ -31,8 +31,15 @@ app.get('/', (req, res) => {
 
 //Render 'all-products.ejs' as all products page.
 app.get('/all-products', (req, res) => {
-    res.render('all-products');
+    Product.find()
+        .then((products) => {
+            res.render('all-products', { product: products });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
+
 
 //Render 'login.ejs' as login page.
 app.get('/login', (req, res) => {
@@ -205,7 +212,11 @@ const orderSchema = new mongoose.Schema({
     shipper_id: String,
     distribution_hub: String,
     status: String,
-    total_price: Number,
+    
+    image:{
+        data: Buffer,
+        mimeType: String,
+    },
     items: [orderedItemSchema],
     address: String
 });
@@ -297,20 +308,6 @@ app.post('/:user_role/:user_id/pfp-update', (req, res) => {
 });
 //---------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //--------------------EXPERIMENTAL!!!!!---------------------------
 //Adding products:
 app.post(`/Vendor/:id/products/update`, (req, res) => {
@@ -383,7 +380,7 @@ app.get('/product-detail/:product_id', (req, res) => {
             if (!product) {
                 console.log('Cannot find product.');
             } else if (product) {
-                return res.render('product-detail', { product })
+                return res.render('all-products', { product })
             }
         })
         .catch((error) => {
@@ -504,8 +501,6 @@ app.post('/Customer/:id/place-order', (req, res) => {
                 });
             });
 
-            const totalPrice = orderItems.reduce((sum, item) => sum + parseFloat(item.price), 0);
-
             const customer = await User.findById(req.params.id);
 
             const order = new Order({
@@ -513,16 +508,8 @@ app.post('/Customer/:id/place-order', (req, res) => {
                 shipper_id: req.params.id,
                 distribution_hub: customer.distribution_hub,
                 status: 'active',
-                total_price: totalPrice,
                 items: orderItems,
                 address: customer.address
-            });
-
-            orderItems.forEach((item, index) => {
-                order.items[index].image = {
-                    data: item.image.data,
-                    mimeType: item.image.mimeType,
-                };
             });
 
             await order.save();
@@ -538,6 +525,7 @@ app.post('/Customer/:id/place-order', (req, res) => {
 
 // Display active orders for shippers
 app.get('/Shipper/:id/orders', (req, res) => {
+    const customer_id =req.params.id;
     const shipper_id = req.params.id;
     Order.find({ status: 'active' })
         .then((orders) => {
