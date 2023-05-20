@@ -399,7 +399,7 @@ app.get('/Customer/:id/product-details/:product_id', (req, res) => {
 
             User.findById(customer_id)
                 .then((user) => {
-                    res.render('product-details', { product, user, customer_id });
+                    res.render('product-detail', { product, user, customer_id });
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -414,7 +414,7 @@ app.get('/product-details/:product_id', (req, res) => {
     const product_id = req.params.product_id;
     Product.findById(product_id)
         .then((product) => {
-            res.render('product-details', { product });
+            res.render('product-detail', { product });
         })
 })
 

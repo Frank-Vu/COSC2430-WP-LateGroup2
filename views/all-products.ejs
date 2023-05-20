@@ -14,24 +14,27 @@
 
     <body>
         <%- include ('partials/nav') %>
-            <%for(let i=0; i < product.length; i++){%>
-                <div class="product-card">
-                    <a href="/Customer/<%= customer_id.id %>/product-details/<%= product[i].id %>" type="button"
-                        class="btn btn-primary" class="product-image">
-                        <img src="data:<%= product[i].image.mimeType %>;base64,<%= product[i].image.data.toString('base64') %>"
-                            alt="product">
-                    </a>
-                    <div class="product-info">
+            <div class="product-main-container">
+
+                <%for(let i=0; i < product.length; i++){%>
+                    <div class="product-card">
                         <a href="/Customer/<%= customer_id.id %>/product-details/<%= product[i].id %>" type="button"
-                            class="btn btn-primary" class="product-name">
-                            <%= product[i].name %>
+                            class="btn btn-primary product-image">
+                            <img id="pimg"
+                                src="data:<%= product[i].image.mimeType %>;base64,<%= product[i].image.data.toString('base64') %>"
+                                alt="product">
                         </a>
-                        <span class="product-price">
-                            <%= product[i].price %>
-                        </span>
+                        <div class="product-info">
+                            <a href="/Customer/<%= customer_id.id %>/product-details/<%= product[i].id %>" type="button"
+                                class="btn btn-primary product-name">
+                                <%= product[i].name %>
+                            </a>
+                            <span class="product-price">
+                                <%= product[i].price %>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <% }; %>
+                    <% }; %>
+            </div>
 
-
-                    <%- include ('partials/footer') %>
+            <%- include ('partials/footer') %>
