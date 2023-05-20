@@ -19,42 +19,42 @@
         <section id="main">
             <h2>Orders:</h2>
             <div class="main-container">
-                <% orders.forEach((order)=> { %>
+                <% orders.forEach((orders)=> { %>
                     <div class="order-card">
                         <span id="order-id">
-                            <%= order.id %>
+                            <%= orders.id %>
                         </span>
 
                         <div class="sub-container" id="image">
-                            <img src="<%= product.image.mimeType %>;base64,<%= product.image.data.toString('base64') %>"
+                            <img src="<%= orders.image.mimeType %>;base64,<%= orders.image.data.toString('base64') %>"
                                 alt="product-image">
                         </div>
 
                         <div class="sub-container" id="customer-info">
                             <span class="order-header">Customer</span>
                             <span class="info">Name:<span class="added-info" id="customer-name">
-                                    <%= order.customerName %>
+                                    <%= orders.customerName %>
                                 </span></span>
                             <span class="info">Adress:<span class="added-info" id="customer-address">
-                                    <%= order.customerAddress %>
+                                    <%= orders.customerAddress %>
                                 </span></span>
                         </div>
 
                         <div class="sub-container" id="product-info">
                             <span class="order-header">Product</span>
                             <span class="info">Name:<span class="added-info" id="product-name">
-                                    <%= order.productName %>
+                                    <%= orders.productName %>
                                 </span></span>
                             <span class="info">Price:<span class="added-info" id="total-price">
-                                    <%= order.totalPrice %>
+                                    <%= orders.totalPrice %>
                                 </span></span>
                         </div>
 
                         <div class="sub-container" id="status-box">
                             <span class="order-header">Status:<span class="added-info" id="status">
-                                    <%= order.status %>
+                                    <%= orders.status %>
                                 </span></span>
-                            <form method="post" action="/Shipper/<%= shipper_id %>/update-order/<%= order.id %>"
+                            <form method="post" action="/Shipper/<%= shipper_id %>/update-order/<%= orders.id %>"
                                 name="status-update" id="change-order-status">
                                 <div class="small-container">
                                     <input type="radio" name="status" id="delivered" value="delivered">
