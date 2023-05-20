@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 
 
 //Connect to MongoDB database USERS
-mongoose.connect('mongodb+srv://frankvuthanh:g6nXJgKdgruRHQiS@cluster0.umoenyh.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://khaiminh2001:minh123@bing-chilling.nrj7j40.mongodb.net/USERS?retryWrites=true&w=majority')
     .then(() => {
         console.log(`Connection established!`);
     })
@@ -27,6 +27,11 @@ app.use(fileUpload());
 //Render 'home.ejs' as home page.
 app.get('/', (req, res) => {
     res.render('home');
+});
+
+//Render 'all-products.ejs' as all products page.
+app.get('/all-products', (req, res) => {
+    res.render('all-products');
 });
 
 //Render 'login.ejs' as login page.
@@ -332,7 +337,7 @@ app.get(`/Vendor/:id/products`, (req, res) => {
             } else if (user) {
                 const product = Product.find({ vendor_id: req.params.id })
                     .then((product) => {
-                        return res.render('vendor-page', { product, user });
+                        return res.render('V_view-add-products', { product, user });
                     })
                     .catch((error) => {
                         console.log(error.message);

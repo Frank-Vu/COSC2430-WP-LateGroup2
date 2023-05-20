@@ -19,7 +19,7 @@
 .home-section {
     display: grid;
     justify-content: center;
-    padding: 20px;
+    padding: 100px;
 }
 
 .home-section h1 {
