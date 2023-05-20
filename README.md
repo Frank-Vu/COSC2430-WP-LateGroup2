@@ -18,4 +18,4 @@
   Password: 12345678
 
 - Repo GitHub: https://github.com/Frank-Vu/COSC2430-WP-LateGroup2
-- Presentation and demo video:
+- Presentation and demo video: https://youtu.be/Gr1GwMelwqM
