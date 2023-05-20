@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --background-color: white;
+    --font-color: black;
+    --font-family: 'Poppins', sans-serif;
+    --decorative-color: red;
+    --button-color: orange;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* || FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* | Left Footer */
+.payment-type {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 25px;
+}
+
+/* | Right Footer */
+.footer-right {
+    display: grid;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Newsletter Section */
+.newsletter-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter-box label {
+    color: black;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.newsletter-box input {
+    color: var(--font-color-light);
+    font-family: var(--font-family);
+    width: 50%;
+    background: var(--main-bg-color-light);
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.newsletter-box button {
+    position: relative;
+    left: 180px;
+    bottom: 28px;
+    background: orangered;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 5px 15px 0 rgba(255, 69, 0, 0.3);
+}
+
+/* Footer links */
+.footer-nav {
+    display: grid;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.top-links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    list-style: none;
+}
+
+.bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    list-style: none;
+}
+
+.footer-link {
+    color: black;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: capitalize;
+    text-decoration: none;
+    text-align: left;
+}
+
+/* Social media icons */
+.social-media {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-media i {
+    font-size: 30px;
+}
