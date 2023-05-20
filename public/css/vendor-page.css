@@ -1,0 +1,418 @@
+/*   RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+
+body {
+    scroll-behavior: smooth;
+    margin: 0 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    margin: 70px 100px;
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    text-shadow: 5px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+h1 span {
+    position: relative;
+    margin: 0 10px;
+    font-size: 50px;
+    background: -webkit-linear-gradient(45deg, #ff8800, #ffd501);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+h1 span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(45deg, #ff8800, #ffd501);
+}
+
+section#product-manage {
+    width: 80%;
+    margin: 70px 10%;
+    z-index: 5;
+}
+
+/*SLIDER*/
+.slider-radio {
+    display: none;
+}
+
+.slider-button-container {
+    margin: 0 5px;
+    display: flex;
+}
+
+.slider-button {
+    position: relative;
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    border-top-left-radius: 20px 100%;
+    border-top-right-radius: 20px 100%;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    color: white;
+    box-shadow: 0 0 10px 2px rgba(0, 100, 222, 0.3);
+}
+
+/*MAIN CONTENTS*/
+.main-container {
+    position: relative;
+    width: calc(100% - 60px);
+    padding: 30px;
+    border: 2px solid black;
+    background-color: #f3f3f3;
+    z-index: 5;
+    overflow-x: hidden;
+    box-shadow: 0 5px 30px 5px rgba(100, 100, 100, 0.4);
+}
+
+.slider {
+    width: calc(200% + 100px);
+    transition: 0.5s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-container {
+    position: relative;
+    width: calc((100% - 100px) / 2);
+}
+
+/*view product*/
+.sub-container#view-product {
+    max-height: 1000px;
+    overflow-y: auto;
+}
+
+.empty {
+    position: relative;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    position: absolute;
+    margin-left: 120px;
+    font-size: 30px;
+}
+
+.product-container {
+    margin-top: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    position: relative;
+    margin: 20px 30px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-image {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 0 0 0.5px rgba(142, 142, 142, 0.5),
+        0 0 10px 1px rgb(180, 180, 180, 0.5);
+}
+
+.product-image:hover {
+    box-shadow:
+        0 0 0 1px rgba(142, 142, 142, 1),
+        0 0 20px 2px rgb(180, 180, 180, 1);
+}
+
+.product-image img {
+    width: 80%;
+    height: auto;
+}
+
+.product-info {
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.product-name {
+    width: 100%;
+    position: relative;
+    font-size: 17px;
+    font-weight: 300;
+    display: block;
+    text-shadow: 0.5px 0.5px 2px rgb(169, 169, 169);
+}
+
+.product-name:hover {
+    text-decoration: underline;
+}
+
+.product-price {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(82, 170, 0);
+    font-style: italic;
+}
+
+.product-price::after {
+    content: ' $';
+}
+
+.product-image:hover+.product-info .product-name {
+    text-decoration: underline;
+}
+
+/*add product*/
+form#product-add {
+    width: 50%;
+    margin: 120px 25% 50px 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+form#product-add .input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+form#product-add .input-box:not(:first-child) {
+    margin-top: 30px;
+}
+
+form#product-add label {
+    font-size: 20px;
+    font-weight: 300;
+    order: -1;
+}
+
+form#product-add input:focus+label {
+    text-decoration: underline;
+}
+
+form#product-add textarea:focus+label {
+    text-decoration: underline;
+}
+
+form#product-add input {
+    margin-top: 10px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+form#product-add input:hover {
+    opacity: 0.4;
+}
+
+form#product-add input:focus {
+    opacity: 1 !important;
+
+}
+
+form#product-add input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+form#product-add input:hover::placeholder {
+    color: rgba(0, 0, 0, 1);
+}
+
+form#product-add input:focus::placeholder {
+    color: transparent;
+}
+
+form#product-add textarea {
+    margin-top: 10px;
+    height: 8em;
+    padding: 5px;
+    font-size: 17px;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+form#product-add textarea:hover {
+    opacity: 0.4;
+}
+
+form#product-add textarea:focus {
+    opacity: 1 !important;
+
+}
+
+form#product-add textarea::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+form#product-add textarea:hover::placeholder {
+    color: rgba(0, 0, 0, 1);
+}
+
+form#product-add textarea:focus::placeholder {
+    color: transparent;
+}
+
+form#product-add button {
+    margin-top: 50px;
+    height: 50px;
+    background-color: rgb(0, 102, 255);
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form#product-add button:hover {
+    opacity: 0.7;
+}
+
+form#product-add button:active {
+    background-color: rgb(0, 69, 172);
+    opacity: 1;
+}
+
+/*TRANSITIONS*/
+/*view section*/
+input#view:checked~.slider-button-container .slider-button#view-option {
+    background-color: rgb(0, 115, 255, 0.5);
+    transform: translateY(75px);
+}
+
+input#view:not(:checked)~.slider-button-container .slider-button#view-option {
+    background-color: rgb(0, 81, 255);
+    transform: translateY(0);
+}
+
+input#view:checked~.main-container .slider {
+    transform: translateX(0);
+}
+
+/*add section*/
+input#add:checked~.slider-button-container .slider-button#add-option {
+    background-color: rgb(0, 115, 255, 0.5);
+    transform: translateY(75px);
+}
+
+input#add:not(:checked)~.slider-button-container .slider-button#add-option {
+    background-color: rgb(0, 81, 255);
+    transform: translateY(0);
+}
+
+input#add:checked~.main-container .slider {
+    transform: translateX(calc((-50% - 50px)));
+}
+
+@media (max-width:1023px) {
+    .slider-button {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    input#view:checked~.slider-button-container .slider-button#view-option {
+        background-color: rgb(0, 115, 255, 0.5);
+        transform: translateY(50px);
+    }
+
+    input#add:checked~.slider-button-container .slider-button#add-option {
+        background-color: rgb(0, 115, 255, 0.5);
+        transform: translateY(50px);
+    }
+
+    form#product-add {
+        width: 80%;
+        margin: 120px 10%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    h1 span {
+        font-size: 45px;
+    }
+}

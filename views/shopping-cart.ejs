@@ -1,0 +1,128 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
+
+<%- include ('partials/head', {title :'Your Cart'}) %>
+    <link rel="stylesheet" href="/css/Header_styles.css">
+    <link rel="stylesheet" href="/css/Footer_styles.css">
+    <link rel="stylesheet" href="/css/shopping-cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    </head>
+
+    <body>
+        <%- include ('partials/nav') %>
+
+            <div class="container-all">
+                <div class="center">
+                    <div class="search-bar-product">
+                        <div class="search-bar-form">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search...">
+                            <button>Search</button>
+                        </div>
+                    </div>
+
+                    <h2>PRODUCTS</h2>
+                    <div class="list">
+                        <% cartItems.forEach((item)=> { %>
+                            <div class="item" data-key="<%= item._id %>">
+                                <div class="img">
+                                    <img src="<%= item.image %>" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="title">
+                                        <%= item.name %>
+                                    </div>
+                                    <div class="des">
+                                        <%= item.description %>
+                                    </div>
+                                    <div class="price">$<%= item.price %>
+                                    </div>
+                                    <input type="number" class="count" min="1" value="1">
+                                    <form action="/Customer/<%= customerId %>/remove-from-cart/<%= item._id %>"
+                                        method="post">
+                                        <button type="submit" class="remove"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                                <% cartItems.forEach((item)=> { %>
+                                    <div class="item" data-key="<%= item._id %>">
+                                        <div class="img">
+                                            <img src="<%= item.image %>" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                <%= item.name %>
+                                            </div>
+                                            <div class="des">
+                                                <%= item.description %>
+                                            </div>
+                                            <div class="price">$<%= item.price %>
+                                            </div>
+                                            <input type="number" class="count" min="1" value="1">
+                                            <form action="/Customer/<%= customerId %>/remove-from-cart/<%= item._id %>"
+                                                method="post">
+                                                <button type="submit" class="remove"><i
+                                                        class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+
+                                        <% cartItems.forEach((item)=> { %>
+                                            <div class="item" data-key="<%= item._id %>">
+                                                <div class="img">
+                                                    <img src="<%= item.image %>" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <div class="title">
+                                                        <%= item.name %>
+                                                    </div>
+                                                    <div class="des">
+                                                        <%= item.description %>
+                                                    </div>
+                                                    <div class="price">$<%= item.price %>
+                                                    </div>
+                                                    <input type="number" class="count" min="1" value="1">
+                                                    <form
+                                                        action="/Customer/<%= customerId %>/remove-from-cart/<%= item._id %>"
+                                                        method="post">
+                                                        <button type="submit" class="remove"><i
+                                                                class="fa-solid fa-trash-can"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                    </div>
+                </div>
+                <div class="product-cart">
+                    <div class="name-product-incart">CART</div>
+                    <div class="listCart">
+                        <% cartItems.forEach((item)=> { %>
+                            <div class="item" data-key="<%= item._id %>">
+                                <div class="img">
+                                    <img src="<%= item.image %>" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="title">
+                                        <%= item.name %>
+                                    </div>
+                                    <div class="price">$<%= item.price %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <form action="/Customer/<%= customerId %>/place-order" method="post">
+                        <button id="place-order" type="submit">Place Order!</button>
+                    </form>
+                </div>
+            </div>
+            <%- include ('partials/footer') %>

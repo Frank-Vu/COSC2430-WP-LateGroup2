@@ -1,0 +1,141 @@
+/*   RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --background-color: white;
+    --font-color: black;
+    --font-family: 'Poppins', sans-serif;
+    --decorative-color: red;
+    --button-color: orange;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* || HEADER */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg-color);
+    z-index: 9;
+}
+
+/* | First part of the navbar */
+.nav {
+    padding: 10px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Header logo */
+.header-logo {
+    width: 60px;
+    transition: 0.5s;
+}
+
+.header-logo:hover {
+    scale: 1.02;
+    transition: 0.5s;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+/* Search bar */
+.search {
+    width: 500px;
+    display: flex;
+}
+
+.search-box {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    outline: none;
+}
+
+.search-btn {
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: black;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder {
+    color: #a9a9a9;
+}
+
+/* Account, cart, and theme */
+.nav-items a {
+    margin-left: 20px;
+}
+
+.nav-items a img {
+    width: 30px;
+}
+
+/* | Second part of the navbar */
+/* Nav links */
+.links-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    border-top: 1px solid #d1d1d1;
+}
+
+.link {
+    position: relative;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--title-font-color);
+    text-decoration: none;
+    text-transform: capitalize;
+    height: 50px;
+    width: 200px;
+    margin: 0 5px;
+    opacity: 0.5;
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}

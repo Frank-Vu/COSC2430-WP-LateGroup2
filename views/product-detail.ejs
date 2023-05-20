@@ -1,0 +1,103 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
+
+<%- include ('partials/head', {title :'Product Detail'}) %>
+    <link rel="stylesheet" href="/css/Header_styles.css">
+    <link rel="stylesheet" href="/css/Footer_styles.css">
+    <link rel="stylesheet" href="/css/Home-Main_styles.css">
+    <link rel="stylesheet" href="/css/product-detail.css">
+    </head>
+
+    <body>
+        <%- include ('partials/nav') %>
+            <!--Bread Crumb-->
+            <ul class="breadcrumb">
+                <li><a href="/">homepage</a></li>
+                <li><a href="all-products">products</a></li>
+                <li>
+                    <%= product.name %>
+                </li>
+            </ul>
+
+            <!--MAIN-->
+
+            <!--product main information-->
+            <section id="product-info">
+                <div class="image-container">
+                    <!--change contents here-->
+                    <img src="data:<%= product.image.mimeType %>;base64,<%= product.image.data.toString('base64') %>"
+                        alt="product-image">
+                </div>
+
+                <div class="product-detail">
+                    <!--change contents here-->
+                    <span class="name">
+                        <%= product.name %>
+                    </span>
+
+                    <!--change contents here-->
+                    <span class="vendor">
+                        <%= user.business_name %>
+                    </span>
+
+                    <!--change contents here-->
+                    <span class="price">
+                        <%= product.price %>
+                    </span>
+
+                    <form method="post" action="/add-to-cart?customer_id=<%=customer_id%>&product_id=<%=product._id%>"
+                        name="add_to_cart" id="add-to-cart" enctype="multipart/form-data">
+                        <button class="add-to-cart">
+                            <img src="/images/shopping-cart.png">
+                            <span>ADD TO CART</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!--product description-->
+            <section id="product-description">
+                <!--slider-->
+                <input class="slider-radio" type="radio" name="desc-slide" id="description" checked>
+                <input class="slider-radio" type="radio" name="desc-slide" id="rating-review">
+                <input class="slider-radio" type="radio" name="desc-slide" id="discussion">
+
+                <div class="slider-button-container">
+                    <label class="slider-button" id="desc" for="description"><span>Description</span></label>
+                    <label class="slider-button" id="rr" for="rating-review"><span>Ratings & Reviews</span></label>
+                    <label class="slider-button" id="disc" for="discussion"><span>Discussions</span></label>
+                </div>
+
+                <!--main content-->
+                <div class="main-container">
+                    <div class="sub-container" id="description-slide">
+                        <h1 class="title">description:</h1>
+                        <div class="content">
+                            <!--change contents here-->
+                            <%= product.description %>
+                        </div>
+                    </div>
+
+                    <div class="sub-container undeveloped" id="rating-review-slide">
+                        <h1 class="title">ratings & reviews:</h1>
+                        <div class="content">
+                        </div>
+                    </div>
+
+                    <div class="sub-container undeveloped" id="discussion-slide">
+                        <h1 class="title">discussions:</h1>
+                        <div class="content">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include ('partials/footer') %>
+    </body>
+    
+    </html>
+

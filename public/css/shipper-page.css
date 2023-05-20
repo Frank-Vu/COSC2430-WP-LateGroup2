@@ -1,0 +1,231 @@
+/*   RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --background-color: #eeeeee;
+    --header-bg-color: #ffffff;
+    --backdrop-color: #f3f3f3;
+    --slider-bg-color: #f3f3f3;
+    --slider-border-color: black;
+    --banner-bg-color: #f3f3f3;
+    --banner-border-color: black;
+
+    --title-font-color: black;
+    --title-font-family: 'Poppins', sans-serif;
+    --title-font-weight: 900;
+    --title-font-size: 24px;
+    --title-font-background: #f3f3f3;
+
+    --subtitle-font-color: black;
+    --subtitle-font-family: 'Poppins', sans-serif;
+    --subtitle-font-weight: 600;
+    --subtitle-font-size: 14px;
+    --subtitle-font-background: #f3f3f3;
+
+    --p-font-color: black;
+    --p-font-family: 'Poppins', sans-serif;
+    --p-font-weight: 400;
+    --p-font-size: 10px;
+    --p-font-background: #f3f3f3;
+}
+
+body {
+    scroll-behavior: smooth;
+    margin: 0 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    position: relative;
+    width: fit-content;
+    margin: 0 10px;
+    font-size: 50px;
+    background: -webkit-linear-gradient(45deg, #04ff00, #9eff01);
+    -webkit-background-clip: text;          
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(45deg, #04ff00, #9eff01);
+}
+
+section#main {
+    width: 80%;
+    margin: 0 10%;
+}
+
+h2 {
+    margin-left: 20px;
+    font-size: 30px;
+    width: 100%;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.order-card {
+    margin-top: 30px;
+    width: calc(100% - 20px);
+    height: 130px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    outline: 1px solid;
+}
+
+#order-id {
+    width: 5%;
+    min-width: 50px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+#order-id::before {
+    content: '#';
+    font-size: 16px;
+}
+
+.sub-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-container:not(:first-of-type) {
+    margin-left: 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+#image {
+    height: 100px;
+    min-width: 100px;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#image img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#customer-info {
+    width: 35%;
+}
+
+#product-info {
+    width: 25%;
+}
+
+#status-box {
+    width: 25%;
+}
+
+.order-header {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.info {
+    font-size: 15px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.added-info {
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: 300;
+}
+
+#status {
+    color: green;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+form#change-order-status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+form#change-order-status * {
+    cursor: pointer;
+}
+
+form#change-order-status input {
+    width: 10px;
+}
+
+form#change-order-status label {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+form#change-order-status label:hover {
+    text-decoration: underline;
+}
+
+form#change-order-status input:hover+label {
+    text-decoration: underline;
+}
+
+form#change-order-status button {
+    margin-top: 5px;
+    align-self: flex-end;
+    background: rgb(255, 153, 0);
+    border: 1px solid;
+    padding: 2px 10px;
+}
+
+form#change-order-status button:hover {
+    background: rgba(255, 153, 0, 0.5);
+}
+
+#customer-name {
+    text-transform: capitalize;
+}
+
+#total-price::after {
+    content: '$';
+    font-size: 12px;
+}
+
+@media (max-width: 1023px) {
+    section#main {
+        width: 90%;
+        margin: 0 5%;
+    }
+}

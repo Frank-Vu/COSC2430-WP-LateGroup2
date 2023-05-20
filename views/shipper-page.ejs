@@ -1,0 +1,77 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
+
+<%- include ('partials/head', {title :'Shipper Orders'}) %>
+    <link rel="stylesheet" href="/css/Footer_styles.css">
+    <link rel="stylesheet" href="/css/shipper-page.css">
+    </head>
+
+    <body>
+        <!--TITLE-->
+        <h1>Shipper Page</h1>
+
+        <!--MAIN-->
+        <section id="main">
+            <h2>Orders:</h2>
+            <div class="main-container">
+                <% orders.forEach((orders)=> { %>
+                    <div class="order-card">
+                        <span id="order-id">
+                            <%= orders.id %>
+                        </span>
+
+                        <div class="sub-container" id="image">
+                            
+                        </div>
+
+                        <div class="sub-container" id="customer-info">
+                            <span class="order-header">Customer</span>
+                            <span class="info">Name:<span class="added-info" id="customer-name">
+                                    <%= orders.customerName %>
+                                </span></span>
+                            <span class="info">Adress:<span class="added-info" id="customer-address">
+                                    <%= orders.customerAddress %>
+                                </span></span>
+                        </div>
+
+                        <div class="sub-container" id="product-info">
+                            <span class="order-header">Product</span>
+                            <span class="info">Name:<span class="added-info" id="product-name">
+                                    <%= orders.productName %>
+                                </span></span>
+                            <span class="info">Price:<span class="added-info" id="total-price">
+                                    <%= orders.totalPrice %>
+                                </span></span>
+                        </div>
+
+                        <div class="sub-container" id="status-box">
+                            <span class="order-header">Status:<span class="added-info" id="status">
+                                    <%= orders.status %>
+                                </span></span>
+                            <form method="post" action="/Shipper/<%= shipper_id %>/update-order/<%= orders.id %>"
+                                name="status-update" id="change-order-status">
+                                <div class="small-container">
+                                    <input type="radio" name="status" id="delivered" value="delivered">
+                                    <label for="delivered">delivered</label>
+                                </div>
+
+                                <div class="small-container">
+                                    <input type="radio" name="status" id="cancelled" value="cancelled">
+                                    <label for="cancelled">cancelled</label>
+                                </div>
+
+                                <button type="submit">Change</b utton>
+                            </form>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+
+
+        <%- include ('partials/footer') %>

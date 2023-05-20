@@ -1,0 +1,27 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
+
+<%- include ('partials/head', {title :'Login'}) %>
+    <link rel="stylesheet" href="/css/login-style.css">
+    </head>
+
+    <body>
+        <section id="login">
+            <h1>LOGIN</h1>
+            <form method="post" id="login-form" action="/login">
+                <label for="username">USER NAME:</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                <label for="password">PASSWORD:</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                <button type="submit">LOG IN</button>
+                <span id="create">Haven't got an account? Sign up <a href="create-account">here</a></span>
+            </form>
+        </section>
+    </body>
+
+    </html>

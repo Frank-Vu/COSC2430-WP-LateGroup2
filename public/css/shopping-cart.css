@@ -1,0 +1,191 @@
+/*   RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root {
+    --white: #fff;
+    --light: #eeeded;
+    --orange: #1762A7;
+}
+
+body {
+    font-family: system-ui;
+}
+
+.container-all {
+    width: 90%;
+    margin: 30px 5%;
+    display: flex;
+    min-height: 80vh;
+}
+
+.container-all .product-cart {
+    width: 30%;
+}
+
+.container-all .center {
+    width: 70%;
+    background-color: var(--light);
+    border-left: 1px solid var(--light);
+    border-right: 1px solid var(--light);
+}
+
+/* center */
+/* form */
+.center .search-bar-product {
+    background-color: var(--white);
+    padding: 20px;
+    height: 80px;
+}
+
+.center .search-bar-product .search-bar-form {
+    width: max-content;
+    border: 1px solid var(--light);
+    border-radius: 20px;
+    padding-left: 15px;
+    color: var(--light);
+}
+
+.center .search-bar-product .search-bar-form input {
+    border: none;
+    padding: 0 10px;
+    outline: none;
+    width: 100px;
+}
+
+.center .search-bar-product .search-bar-form button {
+    border: none;
+    background-color: var(--orange);
+    color: var(--light);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* end form */
+
+.center h2 {
+    padding: 20px;
+}
+
+.center .list {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.item {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 150px auto;
+    padding: 10px;
+    column-gap: 20px;
+    border-radius: 20px;
+}
+
+.item .img img {
+    height: 150px;
+    max-width: 150px;
+}
+
+.item .img {
+    height: 150px;
+    width: 150px;
+    background-color: var(--light);
+    border-radius: 20px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item .content .title {
+    font-weight: bold;
+}
+
+.item .content .des {
+    font-size: small;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.item .content .price {
+    color: var(--orange);
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: small;
+    margin-top: 5px;
+}
+
+.item .count {
+    width: 50px;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 3px 5px;
+    border: 1px solid var(--light);
+    outline: none;
+    margin-top: 5px;
+}
+
+.item .content .add {
+    margin-top: 5px;
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.item .content .remove {
+    padding: 5px;
+    border: none;
+    margin-top: 5px;
+    border-radius: 10px;
+    display: none;
+}
+
+/* end center */
+.product-cart .item {
+    transition: 0.5s;
+    border-bottom: 1px solid var(--light);
+}
+
+.product-cart .name-product-incart {
+    padding: 20px;
+    height: 80px;
+    font-weight: bold;
+    font-size: xx-large;
+    border-bottom: 1px solid var(--light)
+}
+
+.danger {
+    box-shadow: 0 10px 10px var(--orange);
+    transform: translate(0, -10px);
+}
+
+.product-cart .add {
+    display: none;
+}
+
+.product-cart .remove {
+    display: inline-block !important;
+}
+
+#place-order {
+    padding: 15px 40px;
+    margin: 10px;
+    background-color: rgb(255, 186, 57);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#place-order:hover {
+    background-color: rgba(255, 186, 57, 0.7);
+}

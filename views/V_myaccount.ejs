@@ -1,0 +1,104 @@
+<!---  RMIT University Vietnam
+  Course: COSC2430 Web Programming
+  Semester: 2023A
+  Assessment: Assignment 2
+  Author: Le Quang Dat, Lai Dong Khoa, Nguyen Ich Kiet, Phung Hoang Long, Chu Khai Minh, Vu Thanh Tung.
+  ID: s3927251, s3926689, s3978724, s3965673, s3864172, s3963172
+-->
+
+<!--INFOMATION ADDED: put in placeholders spans with class "added-info"-->
+
+<!--TYPES OF ACCOUNT:
+CUSTOMER: do nothing
+
+VENDOR: set classes ".left-nav-item#vendor .main-container#vendor-info" with "display:flex"
+
+SHIPPER: set classes ".left-nav-item#shipper .main-container#shipper-info" with "display:flex"
+-->
+
+<%- include ('partials/head', {title :'My Account'}) %>
+    <link rel="stylesheet" href="/css/myaccount.css">
+    <link rel="stylesheet" href="/css/Footer_styles.css">
+    </head>
+
+    <body>
+        <!--Bread Crumb-->
+        <ul class="breadcrumb">
+            <li><a href="/">homepage</a></li>
+            <li>my account</li>
+        </ul>
+
+        <!--Title-->
+        <h1>My Account</h1>
+
+        <!--Nav bar-->
+        <nav class="left-nav">
+            <span>Navigation:</span>
+            <a class="left-nav-item" href="#main-info">My Details</a>
+            <a class="left-nav-item" id="vendor" href="#vendor-info">My Shop</a>
+            <a class="left-nav-item" href="#security">Security</a>
+            <a class="left-nav-item" href="#log-out">Log out</a>
+        </nav>
+
+        <!--Account-->
+        <section id="main">
+            <div class="main-container" id="main-info">
+                <h2>My Details</h2>
+                <div class="sub-container" id="personal-info">
+                    <h3>Personal Information</h3>
+                    <div class="container">
+                        <img class="profile-image info"
+                            src="data:<%= user.profilePicture.mimeType %>;base64,<%= user.profilePicture.data.toString('base64') %>"
+                            alt="profile-image">
+                    </div>
+                </div>
+            </div>
+
+            <form action="/<%= user.role %>/<%= user._id %>/pfp-update" method="post" name="change_profile_image"
+                id="change-profile-image" enctype="multipart/form-data">
+                <label for="img-change">*Click here to change profile image*</label>
+                <input type="file" name="img_change" id="img-change">
+
+                <button type="submit">submit</button>
+            </form>
+
+            <div class="main-container" id="vendor-info">
+                <h2>My Shop</h2>
+                <div class="sub-container">
+                    <h3>Shop Information</h3>
+                    <div class="info-box">
+                        <span class="info">Business Name:<span class="added-info">
+                                <%= user.business_name %>
+                            </span></span>
+                        <span class="info">Business Address:<span class="added-info">
+                                <%= user.business_address %>
+                            </span></span>
+                        <a href="/Vendor/<%=user.id%>/products">View and Add Product</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-container" id="security">
+                <h2>Security</h2>
+                <div class="sub-container">
+                    <h3>Account Information</h3>
+                    <div class="info-box">
+                        <span class="info">Username:<span class="added-info">
+                                <%= user.username %>
+                            </span></span>
+                        <span class="info">Password:<span class="added-info">HIDDEN</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-container" id="log-out">
+                <h2>Log Out</h2>
+                <form method="post" class="sign-form" name="account_form_vendor" action="/logout"
+                    enctype="multipart/form-data">
+                    <button type="submit">LOG OUT</button>
+                </form>
+            </div>
+        </section>
+
+
+        <%- include ('partials/footer') %>
