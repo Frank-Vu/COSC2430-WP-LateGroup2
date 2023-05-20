@@ -124,6 +124,10 @@ section#main {
     flex-direction: column;
 }
 
+.sub-container{
+    margin-top: 50px;
+}
+
 h2 {
     margin-left: 100px;
     font-size: 35px;
