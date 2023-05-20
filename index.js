@@ -107,9 +107,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        minlength: 8,
-        maxlength: 20,
-        match: /^[a-zA-Z0-9!@#$%^&*]+$/, //Password only allows letters, digits and !@#$%^&*.
         required: true
     },
     full_name: {
