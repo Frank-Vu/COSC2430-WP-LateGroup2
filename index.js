@@ -219,6 +219,7 @@ const Product = mongoose.model('Product', productSchema);
 //experimental:
 const Order = mongoose.model('Order', orderSchema);
 const OrderItem = mongoose.model('OrderItem', orderedItemSchema);
+const Cart = mongoose.model('Cart', cartSchema);
 
 //--------------Registration form:--------------------
 //User register:
