@@ -1,4 +1,4 @@
-<%- include ('partials/head', {title :'Home'}) %>
+<%- include ('partials/head', {title :'Products'}) %>
     <link rel="stylesheet" href="/css/Header_styles.css">
     <link rel="stylesheet" href="/css/Footer_styles.css">
     <link rel="stylesheet" href="/css/Home-Main_styles.css">
@@ -6,7 +6,24 @@
 
     <body>
         <%- include ('partials/nav') %>
+            <% products.forEach(function(product){ %>
+                <div class="product-card">
+                    <a href="/Customer/<%= customer_id.id %>/product-details/<%= product.id %>" type="button"
+                        class="btn btn-primary" class="product-image">
+                        <img src="data:<%= product.image.mimeType %>;base64,<%= product.image.data.toString('base64') %>"
+                            alt="product">
+                    </a>
+                    <div class="product-info">
+                        <a href="/Customer/<%= customer_id.id %>/product-details/<%= product.id %>" type="button"
+                            class="btn btn-primary" class="product-name">
+                            <%= product.name %>
+                        </a>
+                        <span class="product-price">
+                            <%= product.price %>
+                        </span>
+                    </div>
+                </div>
+                <% }); %>
 
 
-
-            <%- include ('partials/footer') %>
+                    <%- include ('partials/footer') %>

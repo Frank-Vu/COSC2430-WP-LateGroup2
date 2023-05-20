@@ -238,6 +238,10 @@ form#change-profile-image button {
     border-radius: 10px;
 }
 
+.sub-container {
+    margin-top: 50px;
+}
+
 @media (max-width: 1023px) {
     .left-nav {
         display: none;

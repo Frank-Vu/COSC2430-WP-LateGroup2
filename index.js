@@ -54,15 +54,20 @@ app.get('/product-detail', (req, res) => {
     res.render('product-detail');
 });
 
-//---------------------------Shipping list:----------------------------
-app.get('/Shipper/shipping-list', (req, res) => {
-    res.render('shipper');
+//Render 'shipper-page.ejs' as orde page.
+app.get('/orders', (req, res) => {
+    res.render('shipper-page');
+});
+
+//Render 'V_view-add-products.ejs' as view and add product page.
+app.get('/view_add', (req, res) => {
+    res.render('V_view-add-products');
 });
 
 //-----------------Render My Account page with data based on the user's:-----------------
 //For customer:
 app.get('/Customer/:id', (req, res) => {
-    User.find(req.params.id)
+    User.find(req.params.id)    
         .then((user) => {
             res.render('C_myaccount', { user });
         })
@@ -370,55 +375,31 @@ app.get('/Customer/:customer_id/product-detail/:product_id', (req, res) => {
             console.log(error.message);
         });
 });
-//---------------------------------------------------
 
-
-
-//----------EXPERIMENTAL ORDER------------------
-// Display all products
-app.get('/Customer/:id/products', (req, res) => {
-    Product.find()
-        .then((products) => {
-            res.render('customer-products', { products });
-        })
-        .catch((error) => {
-            console.log(error.message);
-        });
-});
-
-// Filter products based on name and price 
-app.post('/Customer/:id/products/search', (req, res) => {
-    const { minPrice, maxPrice, productName } = req.body;
-    const query = {
-        price: { $gte: minPrice, $lte: maxPrice },
-        name: { $regex: productName, $options: 'i' },
-    };
-
-    Product.find(query)
-        .then((products) => {
-            res.render('customer-products', { products });
-        })
-        .catch((error) => {
-            console.log(error.message);
-        });
-});
-
-// Add a product to the shopping cart
-app.post('/Customer/:customer_id/add-to-cart/:product_id', (req, res) => {
-    Product.findById(req.params.product_id)
+app.get('/product-detail/:product_id', (req, res) => {
+    const product = Product.findById(req.params.product_id)
         .then((product) => {
-            const cartItem = new Cart({
-                customer_id: req.params.customer_id,
-                vendor_id: product.vendor_id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-                description: product.description
-            });
+            if (!product) {
+                console.log('Cannot find product.');
+            } else if (product) {
+                return res.render('product-detail', { product })
+            }
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+//---------------------------------------------------
+// Display customer products
+app.get('/Customer/:id/product-details/:product_id', (req, res) => {
+    const customer_id = req.params.id;
+    const product_id = req.params.product_id;
+    Product.findById(product_id)
+        .then((product) => {
 
-            cartItem.save()
-                .then(() => {
-                    res.redirect(`/Customer/${req.params.customer_id}/products`);
+            User.findById(customer_id)
+                .then((user) => {
+                    res.render('product-details', { product, user, customer_id });
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -428,6 +409,73 @@ app.post('/Customer/:customer_id/add-to-cart/:product_id', (req, res) => {
             console.log(error.message);
         });
 });
+
+// Display all products
+app.get('/Customer/:customer_id/product-page', (req, res) => {
+    Product.find({})
+        .then((products) => {
+            const customer_id = User.findById(req.params.customer_id)
+                .then((customer_id) => {
+                    res.render('product-page', { products, customer_id: customer_id });
+                })
+        })
+        .catch((error) => console.log(error.message));
+});
+
+
+
+// Get the shopping cart items for a customer
+app.get('/Customer/:customer_id/shopping-cart', async (req, res) => {
+    try {
+        const customer_id = req.params.customer_id;
+        const cartItems = await Cart.find({ customer_id: customer_id });
+        res.render('shopping-cart', { cartItems, customerId: customer_id });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Error fetching cart items' });
+    }
+});
+
+// Add a product to the shopping cart
+app.post('/add-to-cart', (req, res) => {
+    const customer_id = req.query.customer_id;
+    const product_id = req.query.product_id;
+
+    Product.findById(product_id)
+        .then((product) => {
+            const cartItem = new Cart({
+                customer_id: customer_id,
+                vendor_id: product.vendor_id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                description: product.description
+            });
+
+            cartItem.save()
+                .then(() => {
+                    res.redirect(`/Customer/${customer_id}/shopping-cart`);
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+});
+
+// Remove an item from the shopping cart
+app.post('/Customer/:customer_id/remove-from-cart/:product_id', async (req, res) => {
+    try {
+        await Cart.findOneAndDelete({ customer_id: req.params.customer_id, product_id: req.params.product_id });
+        res.redirect(`/Customer/${req.params.customer_id}/shopping-cart`);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Error removing item from cart' });
+    }
+});
+
 
 // Place an order
 app.post('/Customer/:id/place-order', (req, res) => {
@@ -450,7 +498,7 @@ app.post('/Customer/:id/place-order', (req, res) => {
 
             const order = new Order({
                 customer_id: req.params.id,
-                shipper_id: null,
+                shipper_id: req.params.id,
                 distribution_hub: customer.distribution_hub,
                 status: 'active',
                 total_price: totalPrice,
@@ -462,7 +510,7 @@ app.post('/Customer/:id/place-order', (req, res) => {
 
             await Cart.deleteMany({ customer_id: req.params.id });
 
-            res.redirect(`/Customer/${req.params.id}/orders`);
+            res.redirect(`/Customer/${req.params.id}/shopping-cart`);
         })
         .catch((error) => {
             console.log(error.message);
@@ -471,9 +519,10 @@ app.post('/Customer/:id/place-order', (req, res) => {
 
 // Display active orders for shippers
 app.get('/Shipper/:id/orders', (req, res) => {
-    Order.find({ shipper_id: req.params.id, status: 'active' })
+    const shipper_id = req.params.id;
+    Order.find({ status: 'active' })
         .then((orders) => {
-            res.render('shipper-orders', { orders });
+            res.render('shipper-page', { orders, shipper_id });
         })
         .catch((error) => {
             console.log(error.message);
@@ -492,7 +541,6 @@ app.post('/Shipper/:shipper_id/update-order/:order_id', (req, res) => {
             console.log(error.message);
         });
 });
-//--------------------------------------------------  
 
 
 
