@@ -26,7 +26,7 @@
                         </span>
 
                         <div class="sub-container" id="image">
-                            <img src="<%= orders.image.mimeType %>;base64,<%= orders.image.data.toString('base64') %>"
+                            <img src="data:<%= orders.image.mimeType %>;base64,<%= orders.image.data.toString('base64') %>"
                                 alt="product-image">
                         </div>
 

@@ -496,8 +496,11 @@ app.post('/Customer/:id/place-order', (req, res) => {
                     name: item.name,
                     price: item.price,
                     quantity: 1,
-                    image: item.image,
-                    description: item.description
+                    image: {
+                        data: item.image.data,
+                        mimeType: item.image.mimeType,
+                    },
+                    description: item.description,
                 });
             });
 
@@ -513,6 +516,13 @@ app.post('/Customer/:id/place-order', (req, res) => {
                 total_price: totalPrice,
                 items: orderItems,
                 address: customer.address
+            });
+
+            orderItems.forEach((item, index) => {
+                order.items[index].image = {
+                    data: item.image.data,
+                    mimeType: item.image.mimeType,
+                };
             });
 
             await order.save();
